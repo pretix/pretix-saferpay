@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 19:01+0100\n"
+"POT-Creation-Date: 2019-04-17 11:37+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Raphael Michel\n"
 "Language-Team: \n"
@@ -10,3 +10,260 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pretix_saferpay/__init__.py:10
+msgid "Saferpay (SIX) implementation for pretix"
+msgstr ""
+
+#: pretix_saferpay/__init__.py:12
+msgid "This allows to accept payments through saferpay."
+msgstr ""
+
+#: pretix_saferpay/payment.py:28
+msgid "Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:39
+msgid ""
+"The Mollie plugin is operating in test mode. No money will actually be "
+"transferred."
+msgstr ""
+
+#: pretix_saferpay/payment.py:47
+msgid "Endpoint"
+msgstr ""
+
+#: pretix_saferpay/payment.py:50
+msgctxt "mollie"
+msgid "Live"
+msgstr ""
+
+#: pretix_saferpay/payment.py:51
+msgctxt "mollie"
+msgid "Testing"
+msgstr ""
+
+#: pretix_saferpay/payment.py:56
+msgid "API Username"
+msgstr ""
+
+#: pretix_saferpay/payment.py:60
+msgid "API Password"
+msgstr ""
+
+#: pretix_saferpay/payment.py:64
+msgid "Customer ID"
+msgstr ""
+
+#: pretix_saferpay/payment.py:68
+msgid "Terminal ID"
+msgstr ""
+
+#: pretix_saferpay/payment.py:75 pretix_saferpay/payment.py:491
+msgid "Credit card"
+msgstr ""
+
+#: pretix_saferpay/payment.py:80 pretix_saferpay/payment.py:498
+msgid "Bancontact"
+msgstr ""
+
+#: pretix_saferpay/payment.py:85 pretix_saferpay/payment.py:505
+msgid "ePrzelewy"
+msgstr ""
+
+#: pretix_saferpay/payment.py:90 pretix_saferpay/payment.py:512
+msgid "eps"
+msgstr ""
+
+#: pretix_saferpay/payment.py:95 pretix_saferpay/payment.py:521
+msgid "giropay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:100 pretix_saferpay/payment.py:530
+msgid "iDEAL"
+msgstr ""
+
+#: pretix_saferpay/payment.py:112 pretix_saferpay/payment.py:546
+msgid "PayPal"
+msgstr ""
+
+#: pretix_saferpay/payment.py:117 pretix_saferpay/payment.py:553
+msgid "PostFinance Card"
+msgstr ""
+
+#: pretix_saferpay/payment.py:122 pretix_saferpay/payment.py:560
+msgid "PostFinance eFinance"
+msgstr ""
+
+#: pretix_saferpay/payment.py:127 pretix_saferpay/payment.py:567
+msgid "SEPA Direct Debit"
+msgstr ""
+
+#: pretix_saferpay/payment.py:132 pretix_saferpay/payment.py:575
+msgid "Sofort"
+msgstr ""
+
+#: pretix_saferpay/payment.py:232 pretix_saferpay/payment.py:261
+msgid ""
+"The payment has not been captured successfully and can therefore not be "
+"refunded."
+msgstr ""
+
+#: pretix_saferpay/payment.py:326 pretix_saferpay/payment.py:454
+#: pretix_saferpay/views.py:102
+msgid ""
+"We had trouble communicating with Saferpay. Please try again and get in "
+"touch with us if this problem persists."
+msgstr ""
+
+#: pretix_saferpay/payment.py:332
+msgid ""
+"The Saferpay plugin is operating in test mode. No money will actually be "
+"transferred."
+msgstr ""
+
+#: pretix_saferpay/payment.py:490
+msgid "Credit card via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:497
+msgid "Bancontact via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:504
+msgid "ePrzelewy via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:511
+msgid "EPS via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:520
+msgid "giropay via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:529
+msgid "iDEAL via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:538
+msgid "paydirekt via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:539
+msgid "paydirekt"
+msgstr ""
+
+#: pretix_saferpay/payment.py:545
+msgid "PayPal via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:552
+msgid "PostFinance Card via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:559
+msgid "PostFinance eFinance via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:566
+msgid "SEPA Direct Debit via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/payment.py:574
+msgid "Sofort via Saferpay"
+msgstr ""
+
+#: pretix_saferpay/signals.py:34
+msgid "Payment captured."
+msgstr ""
+
+#: pretix_saferpay/signals.py:35
+msgid "Payment authorized."
+msgstr ""
+
+#: pretix_saferpay/signals.py:39
+msgid "Saferpay reported an event: {}"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:3
+#: pretix_saferpay/templates/pretix_saferpay/checkout_payment_form.html:3
+msgid ""
+"After you submitted your order, we will redirect you to Saferpay to complete "
+"your payment. You will then be redirected back here to get your tickets."
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
+#: pretix_saferpay/templates/pretix_saferpay/control.html:15
+msgid "Payment method"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:6
+msgid "ID"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:8
+msgid "Status"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:10
+msgid "Date"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:12
+msgid "SIX Reference"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:17
+msgid "Payment source"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/control.html:24
+msgid "Error message"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/pending.html:4
+msgid ""
+"We're waiting for an answer from the payment provider regarding your "
+"payment. Please contact us if this takes more than a few days."
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/pending.html:9
+msgid ""
+"The payment transaction could not be completed for the following reason:"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/pending.html:16
+msgid "Unknown reason"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/redirect.html:17
+msgid "The payment process has started in a new window."
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
+msgid "The window to enter your payment data was not opened or was closed?"
+msgstr ""
+
+#: pretix_saferpay/templates/pretix_saferpay/redirect.html:24
+msgid "Click here in order to open the window."
+msgstr ""
+
+#: pretix_saferpay/views.py:140
+msgid ""
+"We received your payment but were unable to mark your ticket as the server "
+"was too busy. Please check beck in a couple of minutes."
+msgstr ""
+
+#: pretix_saferpay/views.py:144
+msgid ""
+"We received your payment but were unable to mark your ticket as paid as one "
+"of your ordered products is sold out. Please contact the event organizer for "
+"further steps."
+msgstr ""
+
+#: pretix_saferpay/views.py:166
+msgid ""
+"Sorry, there was an error in the payment process. Please check the link in "
+"your emails to continue."
+msgstr ""

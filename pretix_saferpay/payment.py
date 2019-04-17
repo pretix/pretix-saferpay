@@ -326,6 +326,12 @@ class SaferpayMethod(BasePaymentProvider):
             raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
                                      'with us if this problem persists.'))
 
+    @property
+    def test_mode_message(self):
+        if self.settings.endpoint == 'test':
+            return _('The Saferpay plugin is operating in test mode. No money will actually be transferred.')
+        return None
+
     def _post(self, endpoint, *args, **kwargs):
         r = requests.post(
             'https://{env}.saferpay.com/api/{ep}'.format(

@@ -34,12 +34,6 @@ class SaferpaySettingsHolder(BasePaymentProvider):
         self.settings = SettingsSandbox('payment', 'saferpay', event)
 
     @property
-    def test_mode_message(self):
-        if self.settings.endpoint == "test":
-            return _('The Mollie plugin is operating in test mode. No money will actually be transferred.')
-        return None
-
-    @property
     def settings_form_fields(self):
         fields = [
             ('endpoint',
@@ -47,8 +41,8 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                  label=_('Endpoint'),
                  initial='live',
                  choices=(
-                     ('live', pgettext('mollie', 'Live')),
-                     ('test', pgettext('mollie', 'Testing')),
+                     ('live', pgettext('saferpay', 'Live')),
+                     ('test', pgettext('saferpay', 'Testing')),
                  ),
              )),
             ('api_user',
@@ -192,7 +186,7 @@ class SaferpayMethod(BasePaymentProvider):
             payment_info = json.loads(payment.info)
         else:
             payment_info = None
-        template = get_template('pretix_mollie/pending.html')
+        template = get_template('pretix_saferpay/pending.html')
         ctx = {
             'request': request,
             'event': self.event,
@@ -417,7 +411,7 @@ class SaferpayMethod(BasePaymentProvider):
                 }),
             },
             "Notification": {
-                "NotifyUrl": build_absolute_uri(self.event, 'plugins:pretix_mollie:webhook', kwargs={
+                "NotifyUrl": build_absolute_uri(self.event, 'plugins:pretix_saferpay:webhook', kwargs={
                     'payment': payment.pk,
                 }),
             },

@@ -98,7 +98,12 @@ def capture(payment):
             raise PaymentException('Unknown payment state')
 
         handle_transaction_result(payment, trans)
-    except requests.exceptions.HTTPError:
+    except requests.exceptions.HTTPError as e:
+        payment.order.log_action('pretix.event.order.payment.failed', {
+            'local_id': payment.local_id,
+            'provider': payment.provider,
+            'data': e.response.text
+        })
         raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
                                  'with us if this problem persists.'))
 

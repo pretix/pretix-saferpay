@@ -14,7 +14,7 @@ class PluginApp(AppConfig):
         version = '1.0.0'
 
     def ready(self):
-        from . import signals  # NOQA
+        from . import signals, tasks  # NOQA
 
 
 default_app_config = 'pretix_saferpay.PluginApp'

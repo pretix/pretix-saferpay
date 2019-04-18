@@ -37,11 +37,9 @@ def redirect_view(request, *args, **kwargs):
     return r
 
 
-def handle_transaction_result(payment, trans):
+def handle_transaction_result(payment):
     pprov = payment.payment_provider
-
-    payment.info = json.dumps(trans)
-    payment.save(update_fields=['info'])
+    trans = payment.info_data
 
     if trans.get('Status') == 'AUTHORIZED' and payment.state not in (OrderPayment.PAYMENT_STATE_CONFIRMED,
                                                                      OrderPayment.PAYMENT_STATE_REFUNDED):
@@ -76,9 +74,15 @@ def handle_transaction_result(payment, trans):
         payment.save(update_fields=['state'])
 
 
-def capture(payment):
+def capture(payment: OrderPayment):
+    if payment.state == OrderPayment.PAYMENT_STATE_CONFIRMED:
+        return
+
     pprov = payment.payment_provider
     try:
+        if payment.info_data.get('Status') == 'CAPTURED':
+            return
+
         if 'Token' in payment.info_data:
             req = pprov._post('Payment/v1/PaymentPage/Assert', json={
                 "RequestHeader": {
@@ -94,10 +98,15 @@ def capture(payment):
             trans = data['Transaction']
             if 'PaymentMeans' in data:
                 trans['PaymentMeans'] = data['PaymentMeans']
+
+            payment.info = json.dumps(trans)
+            payment.save(update_fields=['info'])
+            handle_transaction_result(payment)
+        elif payment.info_data.get('Status') == 'AUTHORIZED':
+            handle_transaction_result(payment)
         else:
             raise PaymentException('Unknown payment state')
 
-        handle_transaction_result(payment, trans)
     except requests.exceptions.HTTPError as e:
         payment.order.log_action('pretix.event.order.payment.failed', {
             'local_id': payment.local_id,
@@ -141,6 +150,8 @@ class ReturnView(SaferpayOrderView, View):
                                           OrderPayment.PAYMENT_STATE_CANCELED):
                 try:
                     capture(self.payment)
+                except PaymentException as e:
+                    messages.error(self.request, str(e))
                 except LockTimeoutException:
                     messages.error(self.request, _('We received your payment but were unable to mark your ticket as '
                                                    'the server was too busy. Please check beck in a couple of '
@@ -167,6 +178,7 @@ class ReturnView(SaferpayOrderView, View):
         return self._redirect_to_order()
 
     def _redirect_to_order(self):
+        self.order.refresh_from_db()
         if self.request.session.get('payment_saferpay_order_secret') != self.order.secret:
             messages.error(self.request, _('Sorry, there was an error in the payment process. Please check the link '
                                            'in your emails to continue.'))
@@ -181,12 +193,9 @@ class ReturnView(SaferpayOrderView, View):
 @method_decorator(csrf_exempt, 'dispatch')
 class WebhookView(View):
     def get(self, request, *args, **kwargs):
-        try:
-            capture(self.payment)
-        except LockTimeoutException:
-            return HttpResponse(status=503)
-        except Quota.QuotaExceededException:
-            pass
+        from .tasks import capture_task
+
+        capture_task.apply_async(args=(self.payment.pk,), countdown=30)
         return HttpResponse(status=200)
 
     @cached_property

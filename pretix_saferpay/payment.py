@@ -64,9 +64,29 @@ class SaferpaySettingsHolder(BasePaymentProvider):
         ]
         d = OrderedDict(
             fields + [
-                ('method_creditcard',
+                ('method_visa',
                  forms.BooleanField(
-                     label=_('Credit card'),
+                     label=_('VISA'),
+                     required=False,
+                 )),
+                ('method_mastercard',
+                 forms.BooleanField(
+                     label=_('MasterCard'),
+                     required=False,
+                 )),
+                ('method_diners',
+                 forms.BooleanField(
+                     label=_('Diners'),
+                     required=False,
+                 )),
+                ('method_jcb',
+                 forms.BooleanField(
+                     label=_('JCB'),
+                     required=False,
+                 )),
+                ('method_amex',
+                 forms.BooleanField(
+                     label=_('American Express'),
                      required=False,
                  )),
                 ('method_bancontact',
@@ -482,7 +502,23 @@ class SaferpayCC(SaferpayMethod):
     method = 'creditcard'
     verbose_name = _('Credit card via Saferpay')
     public_name = _('Credit card')
-    payment_methods = ["AMEX", "DINERS", "JCB", "MAESTRO", "MASTERCARD", "VISA", "VPAY"]
+
+    @property
+    def payment_methods(self):
+        payment_methods = []
+        if self.settings.get('method_visa', as_type=bool):
+            payment_methods.append("VISA")
+        if self.settings.get('method_diners', as_type=bool):
+            payment_methods.append("DINERS")
+        if self.settings.get('method_jcb', as_type=bool):
+            payment_methods.append("JCB")
+        if self.settings.get('method_mastercard', as_type=bool):
+            payment_methods.append("MASTERCARD")
+        return payment_methods
+
+    @property
+    def is_enabled(self) -> bool:
+        return self.settings.get('_enabled', as_type=bool) and self.payment_methods
 
 
 class SaferpayBancontact(SaferpayMethod):

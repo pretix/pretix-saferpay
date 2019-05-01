@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-17 12:08+0200\n"
-"PO-Revision-Date: 2019-04-17 10:08+0000\n"
+"PO-Revision-Date: 2019-05-01 21:00+0000\n"
 "Last-Translator: Raphael Michel <michel@rami.io>\n"
 "Language-Team: German (informal) <https://translate.pretix.eu/projects/"
 "pretix/pretix-plugin-saferpay/de_Informal/>\n"
@@ -31,17 +31,11 @@ msgid "Endpoint"
 msgstr "Endpunkt"
 
 #: pretix_saferpay/payment.py:44
-#, fuzzy
-#| msgctxt "mollie"
-#| msgid "Live"
 msgctxt "saferpay"
 msgid "Live"
 msgstr "Live"
 
 #: pretix_saferpay/payment.py:45
-#, fuzzy
-#| msgctxt "mollie"
-#| msgid "Testing"
 msgctxt "saferpay"
 msgid "Testing"
 msgstr "Testing"

@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-17 12:08+0200\n"
-"PO-Revision-Date: 2019-04-17 10:08+0000\n"
+"PO-Revision-Date: 2019-05-01 21:00+0000\n"
 "Last-Translator: Raphael Michel <michel@rami.io>\n"
-"Language-Team: German <https://translate.pretix.eu/projects/pretix/pretix-"
-"plugin-saferpay/de/>\n"
+"Language-Team: German <https://translate.pretix.eu/projects/pretix/"
+"pretix-plugin-saferpay/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,17 +31,11 @@ msgid "Endpoint"
 msgstr "API-Endpunkt"
 
 #: pretix_saferpay/payment.py:44
-#, fuzzy
-#| msgctxt "mollie"
-#| msgid "Live"
 msgctxt "saferpay"
 msgid "Live"
 msgstr "Live"
 
 #: pretix_saferpay/payment.py:45
-#, fuzzy
-#| msgctxt "mollie"
-#| msgid "Testing"
 msgctxt "saferpay"
 msgid "Testing"
 msgstr "Test-System"
@@ -138,17 +132,14 @@ msgid "Bancontact via Saferpay"
 msgstr "Bancontact via Saferpay"
 
 #: pretix_saferpay/payment.py:498
-#, fuzzy
 msgid "ePrzelewy via Saferpay"
 msgstr "ePrzelewy via Saferpay"
 
 #: pretix_saferpay/payment.py:505
-#, fuzzy
 msgid "EPS via Saferpay"
 msgstr "EPS via Saferpay"
 
 #: pretix_saferpay/payment.py:514
-#, fuzzy
 msgid "giropay via Saferpay"
 msgstr "giropay via Saferpay"
 

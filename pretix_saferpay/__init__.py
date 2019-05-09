@@ -11,7 +11,7 @@ class PluginApp(AppConfig):
         author = 'Raphael Michel'
         description = ugettext_lazy('This allows to accept payments through saferpay.')
         visible = True
-        version = '1.0.0'
+        version = '1.1.0'
 
     def ready(self):
         from . import signals, tasks  # NOQA

@@ -25,7 +25,7 @@ cmdclass = {
 
 setup(
     name='pretix-saferpay',
-    version='1.1.0',
+    version='1.2.0',
     description='This allows to accept payments through saferpay.',
     long_description=long_description,
     url='https://github.com/pretix/pretix-saferpay',

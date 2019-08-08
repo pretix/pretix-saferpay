@@ -1,5 +1,5 @@
 Saferpay (SIX) implementation for pretix
-==========================
+========================================
 
 This is a plugin for `pretix`_. 
 

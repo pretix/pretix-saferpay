@@ -237,6 +237,15 @@ class SaferpayMethod(BasePaymentProvider):
         }
         return template.render(ctx)
 
+    def api_payment_details(self, payment: OrderPayment):
+        return {
+            "id": payment.info_data.get('Id'),
+            "status": payment.info_data.get('Status'),
+            "reference": payment.info_data.get('SixTransactionReference'),
+            "payment_method": payment.info_data.get('PaymentMeans', {}).get('Brand', {}).get('Name'),
+            "payment_source": payment.info_data.get('PaymentMeans', {}).get('DisplayText'),
+        }
+
     def execute_refund(self, refund: OrderRefund):
         d = refund.payment.info_data
 

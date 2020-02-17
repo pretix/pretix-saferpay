@@ -12,7 +12,7 @@ class PluginApp(AppConfig):
         category = 'PAYMENT'
         description = ugettext_lazy('This allows to accept payments through saferpay.')
         visible = True
-        version = '1.2.1'
+        version = '1.2.2'
 
     def ready(self):
         from . import signals, tasks  # NOQA

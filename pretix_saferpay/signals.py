@@ -1,6 +1,6 @@
 import logging
 from django.dispatch import receiver
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from pretix.base.settings import settings_hierarkey
 from pretix.base.signals import (

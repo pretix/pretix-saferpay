@@ -11,7 +11,7 @@ from django.conf import settings
 from django.core import signing
 from django.http import HttpRequest
 from django.template.loader import get_template
-from django.utils.translation import pgettext, ugettext_lazy as _
+from django.utils.translation import pgettext, gettext_lazy as _
 from requests import HTTPError
 
 from pretix.base.decimal import round_decimal

@@ -54,7 +54,7 @@ msgstr "API-Passwort"
 
 #: pretix_saferpay/payment.py:58
 msgid "Customer ID"
-msgstr "Kunden-ID"
+msgstr "Kundennummer"
 
 #: pretix_saferpay/payment.py:62
 msgid "Terminal ID"

@@ -306,7 +306,9 @@ class SaferpayMethod(BasePaymentProvider):
             refund.info_data = req.json()
             refund.save(update_fields=['info'])
 
-            if refund.info_data['Transaction'].get('Status') == 'AUTHORIZED':
+            if refund.info_data['Transaction'].get('Status') == 'CAPTURED':
+                refund.done()
+            elif refund.info_data['Transaction'].get('Status') == 'AUTHORIZED':
                 req = self._post('Payment/v1/Transaction/Capture', json={
                     "RequestHeader": {
                         "SpecVersion": "1.10",

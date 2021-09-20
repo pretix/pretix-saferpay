@@ -15,13 +15,13 @@ def register_payment_provider(sender, **kwargs):
     from .payment import (
         SaferpayBancontact, SaferpayBanktransfer, SaferpayCC, SaferpayEPS, SaferpayGiropay, SaferpayIdeal,
         SaferpayPaydirekt, SaferpayPayPal, SaferpayPostfinanceCard, SaferpayPostfinanceEfinance,
-        SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort
+        SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort, SaferpayTwint
     )
 
     return [
         SaferpayBancontact, SaferpayBanktransfer, SaferpayCC, SaferpayEPS, SaferpayGiropay, SaferpayIdeal,
         SaferpayPaydirekt, SaferpayPayPal, SaferpayPostfinanceCard, SaferpayPostfinanceEfinance,
-        SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort
+        SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort, SaferpayTwint
     ]
 
 

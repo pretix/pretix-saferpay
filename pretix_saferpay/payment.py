@@ -114,6 +114,11 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                      label=_('iDEAL'),
                      required=False,
                  )),
+                ('method_twint',
+                 forms.BooleanField(
+                     label='TWINT',
+                     required=False,
+                 )),
                 # Disabled because we couldn't test the flow which is documented as being different than the others
                 # (i.e. it has a payment state and uses callbacks)
                 #('method_paydirekt',
@@ -616,3 +621,12 @@ class SaferpaySofort(SaferpayMethod):
     refunds_allowed = False
     cancel_flow = False
     payment_methods = ["SOFORT"]
+
+
+class SaferpayTwint(SaferpayMethod):
+    method = 'twint'
+    verbose_name = _('TWINT via Saferpay')
+    public_name = 'TWINT'
+    refunds_allowed = False
+    cancel_flow = False
+    payment_methods = ["TWINT"]

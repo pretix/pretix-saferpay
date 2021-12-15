@@ -281,8 +281,11 @@ class SaferpayMethod(BasePaymentProvider):
                     except:
                         req.raise_for_status()
                     else:
-                        if err['ErrorName'] not in ('ACTION_NOT_SUPPORTED', 'TRANSACTION_ALREADY_CAPTURED', 'TRANSACTION_IN_WRONG_STATE'):
+                        if err.get('ErrorName') not in ('ACTION_NOT_SUPPORTED', 'TRANSACTION_ALREADY_CAPTURED', 'TRANSACTION_IN_WRONG_STATE'):
                             req.raise_for_status()
+                        else:
+                            raise PaymentException(err.get('ErrorName'))
+                return
 
             if 'CaptureId' not in d:
                 raise PaymentException(_('The payment has not been captured successfully and can therefore not be '

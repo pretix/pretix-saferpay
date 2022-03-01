@@ -592,6 +592,7 @@ class SaferpayPayPal(SaferpayMethod):
     method = 'paypal'
     verbose_name = _('PayPal via Saferpay')
     public_name = _('PayPal')
+    cancel_flow = False
     payment_methods = ["PAYPAL"]
 
 

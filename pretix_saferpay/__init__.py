@@ -10,8 +10,9 @@ class PluginApp(AppConfig):
         name = gettext_lazy('Saferpay (SIX)')
         author = 'Raphael Michel'
         category = 'PAYMENT'
-        description = gettext_lazy('This allows to accept payments through saferpay.')
+        description = gettext_lazy('Accept payments through Saferpay, a payment method offered by Worldline (formerly SIX Payment Services).')
         visible = True
+        picture = "pretix_saferpay/logo.svg"
         version = '1.3.0'
 
     def ready(self):

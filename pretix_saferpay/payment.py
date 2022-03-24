@@ -275,6 +275,7 @@ class SaferpayMethod(BasePaymentProvider):
                     refund.info = req.text
                     refund.save(update_fields=['info'])
                     refund.done()
+                    return
                 else:
                     try:
                         err = req.json()
@@ -284,8 +285,7 @@ class SaferpayMethod(BasePaymentProvider):
                         if err.get('ErrorName') not in ('ACTION_NOT_SUPPORTED', 'TRANSACTION_ALREADY_CAPTURED', 'TRANSACTION_IN_WRONG_STATE'):
                             req.raise_for_status()
                         else:
-                            raise PaymentException(err.get('ErrorName'))
-                return
+                            pass  # retry with regular flow
 
             if 'CaptureId' not in d:
                 raise PaymentException(_('The payment has not been captured successfully and can therefore not be '

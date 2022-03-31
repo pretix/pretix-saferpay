@@ -13,7 +13,7 @@ class PluginApp(AppConfig):
         description = gettext_lazy('Accept payments through Saferpay, a payment method offered by Worldline (formerly SIX Payment Services).')
         visible = True
         picture = "pretix_saferpay/logo.svg"
-        version = '1.3.0'
+        version = '1.3.1'
 
     def ready(self):
         from . import signals, tasks  # NOQA

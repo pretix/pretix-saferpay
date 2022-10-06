@@ -12,7 +12,7 @@ from django.core import signing
 from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import pgettext, gettext_lazy as _
-from requests import HTTPError
+from requests import HTTPError, RequestException
 
 from pretix.base.decimal import round_decimal
 from pretix.base.models import Event, OrderPayment, OrderRefund
@@ -357,6 +357,21 @@ class SaferpayMethod(BasePaymentProvider):
             })
             raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
                                      'with us if this problem persists.'))
+        except RequestException as e:
+            logger.exception('Saferpay error')
+            refund.info_data = {
+                'error': True,
+                'detail': str(e)
+            }
+            refund.state = OrderRefund.REFUND_STATE_FAILED
+            refund.save()
+            refund.order.log_action('pretix.event.order.refund.failed', {
+                'local_id': refund.local_id,
+                'provider': refund.provider,
+                'data': refund.info_data
+            })
+            raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
+                                     'with us if this problem persists.'))
 
     @property
     def test_mode_message(self):
@@ -371,6 +386,7 @@ class SaferpayMethod(BasePaymentProvider):
                 ep=endpoint,
             ),
             auth=(self.settings.get('api_user'), self.settings.get('api_pass')),
+            timeout=20,
             *args, **kwargs
         )
         return r
@@ -382,6 +398,7 @@ class SaferpayMethod(BasePaymentProvider):
                 ep=endpoint,
             ),
             auth=(self.settings.get('api_user'), self.settings.get('api_pass')),
+            timeout=20,
             *args, **kwargs
         )
         return r
@@ -476,6 +493,21 @@ class SaferpayMethod(BasePaymentProvider):
                     'error': True,
                     'detail': req.text
                 }
+            payment.state = OrderPayment.PAYMENT_STATE_FAILED
+            payment.save()
+            payment.order.log_action('pretix.event.order.payment.failed', {
+                'local_id': payment.local_id,
+                'provider': payment.provider,
+                'data': payment.info_data
+            })
+            raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
+                                     'with us if this problem persists.'))
+        except RequestException as e:
+            logger.exception('Saferpay request error')
+            payment.info_data = {
+                'error': True,
+                'detail': str(e)
+            }
             payment.state = OrderPayment.PAYMENT_STATE_FAILED
             payment.save()
             payment.order.log_action('pretix.event.order.payment.failed', {

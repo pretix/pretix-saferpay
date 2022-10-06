@@ -115,6 +115,14 @@ def capture(payment: OrderPayment):
         })
         raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
                                  'with us if this problem persists.'))
+    except requests.exceptions.RequestException as e:
+        payment.order.log_action('pretix.event.order.payment.failed', {
+            'local_id': payment.local_id,
+            'provider': payment.provider,
+            'data': str(e)
+        })
+        raise PaymentException(_('We had trouble communicating with Saferpay. Please try again and get in touch '
+                                 'with us if this problem persists.'))
 
 
 class SaferpayOrderView:

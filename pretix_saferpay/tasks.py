@@ -1,5 +1,4 @@
 from django_scopes import scopes_disabled
-
 from pretix.base.models import OrderPayment
 from pretix.celery_app import app
 

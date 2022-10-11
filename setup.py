@@ -6,35 +6,34 @@ from setuptools import setup, find_packages
 
 
 try:
-    with open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8') as f:
+    with open(
+        os.path.join(os.path.dirname(__file__), "README.rst"), encoding="utf-8"
+    ) as f:
         long_description = f.read()
 except:
-    long_description = ''
+    long_description = ""
 
 
 class CustomBuild(build):
     def run(self):
-        management.call_command('compilemessages', verbosity=1)
+        management.call_command("compilemessages", verbosity=1)
         build.run(self)
 
 
-cmdclass = {
-    'build': CustomBuild
-}
+cmdclass = {"build": CustomBuild}
 
 
 setup(
-    name='pretix-saferpay',
-    version='1.3.1',
-    description='This allows to accept payments through saferpay.',
+    name="pretix-saferpay",
+    version="1.3.1",
+    description="This allows to accept payments through saferpay.",
     long_description=long_description,
-    url='https://github.com/pretix/pretix-saferpay',
-    author='Raphael Michel',
-    author_email='michel@rami.io',
-    license='Apache Software License',
-
+    url="https://github.com/pretix/pretix-saferpay",
+    author="Raphael Michel",
+    author_email="michel@rami.io",
+    license="Apache Software License",
     install_requires=[],
-    packages=find_packages(exclude=['tests', 'tests.*']),
+    packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
     cmdclass=cmdclass,
     entry_points="""

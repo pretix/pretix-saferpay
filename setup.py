@@ -3,6 +3,7 @@ from distutils.command.build import build
 
 from django.core import management
 from setuptools import setup, find_packages
+from pretix_saferpay import __version__
 
 
 try:
@@ -25,7 +26,7 @@ cmdclass = {"build": CustomBuild}
 
 setup(
     name="pretix-saferpay",
-    version="1.3.2",
+    version=__version__,
     description="This allows to accept payments through saferpay.",
     long_description=long_description,
     url="https://github.com/pretix/pretix-saferpay",

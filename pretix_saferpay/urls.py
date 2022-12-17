@@ -1,11 +1,11 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from pretix.multidomain import event_url
 
 from .views import ReturnView, WebhookView, redirect_view
 
 event_patterns = [
-    url(
-        r"^saferpay/",
+    path(
+        "saferpay/",
         include(
             [
                 event_url(
@@ -14,9 +14,9 @@ event_patterns = [
                     name="webhook",
                     require_live=False,
                 ),
-                url(r"^redirect/$", redirect_view, name="redirect"),
-                url(
-                    r"^return/(?P<order>[^/]+)/(?P<hash>[^/]+)/(?P<payment>[0-9]+)/(?P<action>[^/]+)$",
+                path("redirect/", redirect_view, name="redirect"),
+                path(
+                    "return/<str:order>/<str:hash>/<int:payment>/<str:action>",
                     ReturnView.as_view(),
                     name="return",
                 ),

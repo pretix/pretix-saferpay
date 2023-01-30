@@ -795,7 +795,7 @@ class SaferpayPostfinanceCard(SaferpayMethod):
 
 
 class SaferpayPostfinanceEfinance(SaferpayMethod):
-    method = "postfinance_card"
+    method = "postfinance_efinance"
     verbose_name = _("PostFinance eFinance via Saferpay")
     public_name = _("PostFinance eFinance")
     payment_methods = ["POSTFINANCE"]

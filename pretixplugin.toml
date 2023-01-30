@@ -1,0 +1,10 @@
+# This file is used by the pretix team internally to coordinate releases of this plugin
+[plugin]
+package = "pretix-saferpay"
+modules = [ "pretix_saferpay" ]
+marketplace_name = "saferpay"
+pypi = true
+repository_servers = { origin = "github.com" }
+tag_targets = [ "origin" ]
+branch_targets = [ "origin/master" ]
+

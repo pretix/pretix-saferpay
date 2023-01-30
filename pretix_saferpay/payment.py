@@ -2,7 +2,6 @@ import hashlib
 import json
 import logging
 import requests
-import urllib.parse
 import uuid
 from collections import OrderedDict
 from django import forms
@@ -723,6 +722,8 @@ class SaferpayCC(SaferpayMethod):
             payment_methods.append("JCB")
         if self.settings.get("method_mastercard", as_type=bool):
             payment_methods.append("MASTERCARD")
+        if self.settings.get("method_amex", as_type=bool):
+            payment_methods.append("AMEX")
         return payment_methods
 
     @property

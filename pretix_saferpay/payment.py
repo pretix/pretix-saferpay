@@ -429,6 +429,18 @@ class SaferpayMethod(BasePaymentProvider):
                     "data": refund.info_data,
                 },
             )
+            if "ProcessorMessage" in refund.info_data:
+                raise PaymentException(
+                    _(
+                        "Saferpay returned the following error: {error}"
+                    ).format(error=refund.info_data.get('ProcessorMessage'))
+                )
+            elif "ErrorMessage" in refund.info_data:
+                raise PaymentException(
+                    _(
+                        "Saferpay returned the following error: {error}"
+                    ).format(error=refund.info_data.get('ErrorMessage'))
+                )
             raise PaymentException(
                 _(
                     "We had trouble communicating with Saferpay. Please try again and get in touch "

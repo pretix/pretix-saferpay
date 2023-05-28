@@ -17,7 +17,7 @@ class PluginApp(AppConfig):
         visible = True
         picture = "pretix_saferpay/logo.svg"
         version = __version__
-        compatibility = "pretix>=4.16.0"
+        compatibility = "pretix>=4.20.0"
 
     def ready(self):
         from . import signals, tasks  # NOQA

@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def register_payment_provider(sender, **kwargs):
     from .payment import (
         SaferpayBancontact,
-        SaferpayBanktransfer,
+        SaferpayEPrzelewy,
         SaferpayCC,
         SaferpayEPS,
         SaferpayGiropay,
@@ -28,7 +28,7 @@ def register_payment_provider(sender, **kwargs):
 
     return [
         SaferpayBancontact,
-        SaferpayBanktransfer,
+        SaferpayEPrzelewy,
         SaferpayCC,
         SaferpayEPS,
         SaferpayGiropay,

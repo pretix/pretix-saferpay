@@ -750,7 +750,7 @@ class SaferpayBancontact(SaferpayMethod):
     payment_methods = ["BANCONTACT"]
 
 
-class SaferpayBanktransfer(SaferpayMethod):
+class SaferpayEPrzelewy(SaferpayMethod):
     method = "eprzelewy"
     verbose_name = _("ePrzelewy via Saferpay")
     public_name = _("ePrzelewy")

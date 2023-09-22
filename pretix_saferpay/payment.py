@@ -706,17 +706,6 @@ class SaferpayMethod(BasePaymentProvider):
         else:
             return str(url)
 
-    def shred_payment_info(self, obj: OrderPayment):
-        if not obj.info:
-            return
-        d = json.loads(obj.info)
-        if "details" in d:
-            d["details"] = {k: "█" for k in d["details"].keys()}
-
-        d["_shredded"] = True
-        obj.info = json.dumps(d)
-        obj.save(update_fields=["info"])
-
 
 class SaferpayCC(SaferpayMethod):
     method = "creditcard"

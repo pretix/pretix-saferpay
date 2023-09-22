@@ -216,7 +216,7 @@ class ReturnView(SaferpayOrderView, View):
                         self.request,
                         _(
                             "We received your payment but were unable to mark your ticket as "
-                            "the server was too busy. Please check beck in a couple of "
+                            "the server was too busy. Please check back in a couple of "
                             "minutes."
                         ),
                     )

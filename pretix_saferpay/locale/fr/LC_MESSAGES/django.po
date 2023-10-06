@@ -1,18 +1,23 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2023-07-21 21:00+0000\n"
-"Last-Translator: Raphael Michel <michel@rami.io>\n"
-"Language-Team: German <https://translate.pretix.eu/projects/pretix/"
-"pretix-plugin-saferpay/de/>\n"
-"Language: de\n"
+"PO-Revision-Date: 2023-10-06 03:00+0000\n"
+"Last-Translator: Ronan LE MEILLAT <ronan.le_meillat@highcanfly.club>\n"
+"Language-Team: French <https://translate.pretix.eu/projects/pretix/"
+"pretix-plugin-saferpay/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: pretix_saferpay/__init__.py:10
 msgid "Saferpay (SIX)"
@@ -23,8 +28,8 @@ msgid ""
 "Accept payments through Saferpay, a payment method offered by Worldline "
 "(formerly SIX Payment Services)."
 msgstr ""
-"Akzeptieren Sie Zahlungen über Saferpay, eine Zahlungsmethode von Worldline "
-"(ehemals SIX Payment Services)."
+"Acceptez les paiements via Saferpay, un mode de paiement proposé par "
+"Worldline (anciennement SIX Payment Services)."
 
 #: pretix_saferpay/payment.py:28
 msgid "Saferpay"
@@ -32,7 +37,7 @@ msgstr "Saferpay"
 
 #: pretix_saferpay/payment.py:41
 msgid "Endpoint"
-msgstr "API-Endpunkt"
+msgstr "Point de terminaison"
 
 #: pretix_saferpay/payment.py:44
 msgctxt "saferpay"
@@ -42,23 +47,23 @@ msgstr "Live"
 #: pretix_saferpay/payment.py:45
 msgctxt "saferpay"
 msgid "Testing"
-msgstr "Test-System"
+msgstr "Test"
 
 #: pretix_saferpay/payment.py:50
 msgid "API Username"
-msgstr "API-Username"
+msgstr "Nom d’utilisateur API"
 
 #: pretix_saferpay/payment.py:54
 msgid "API Password"
-msgstr "API-Passwort"
+msgstr "Mot de passe de l’API"
 
 #: pretix_saferpay/payment.py:58
 msgid "Customer ID"
-msgstr "Kundennummer"
+msgstr "ID Client"
 
 #: pretix_saferpay/payment.py:62
 msgid "Terminal ID"
-msgstr "Terminal-ID"
+msgstr "ID du terminal"
 
 #: pretix_saferpay/payment.py:69
 msgid "VISA"
@@ -66,7 +71,7 @@ msgstr "VISA"
 
 #: pretix_saferpay/payment.py:74
 msgid "MasterCard"
-msgstr "MasterCard"
+msgstr "Mastercard"
 
 #: pretix_saferpay/payment.py:79
 msgid "Diners"
@@ -81,134 +86,122 @@ msgid "American Express"
 msgstr "American Express"
 
 #: pretix_saferpay/payment.py:94 pretix_saferpay/payment.py:546
-#: pretix_saferpay/payment.py:74 pretix_saferpay/payment.py:492
 msgid "Bancontact"
 msgstr "Bancontact"
 
 #: pretix_saferpay/payment.py:99 pretix_saferpay/payment.py:553
-#: pretix_saferpay/payment.py:79 pretix_saferpay/payment.py:499
 msgid "ePrzelewy"
 msgstr "ePrzelewy"
 
 #: pretix_saferpay/payment.py:104 pretix_saferpay/payment.py:560
-#: pretix_saferpay/payment.py:84 pretix_saferpay/payment.py:506
 msgid "eps"
 msgstr "eps"
 
 #: pretix_saferpay/payment.py:109 pretix_saferpay/payment.py:569
-#: pretix_saferpay/payment.py:89 pretix_saferpay/payment.py:515
 msgid "giropay"
 msgstr "giropay"
 
 #: pretix_saferpay/payment.py:114 pretix_saferpay/payment.py:578
-#: pretix_saferpay/payment.py:94 pretix_saferpay/payment.py:524
 msgid "iDEAL"
 msgstr "iDEAL"
 
 #: pretix_saferpay/payment.py:131 pretix_saferpay/payment.py:594
-#: pretix_saferpay/payment.py:106 pretix_saferpay/payment.py:540
 msgid "PayPal"
 msgstr "PayPal"
 
 #: pretix_saferpay/payment.py:136 pretix_saferpay/payment.py:602
-#: pretix_saferpay/payment.py:111 pretix_saferpay/payment.py:547
 msgid "PostFinance Card"
 msgstr "PostFinance Card"
 
 #: pretix_saferpay/payment.py:141 pretix_saferpay/payment.py:609
-#: pretix_saferpay/payment.py:116 pretix_saferpay/payment.py:554
 msgid "PostFinance eFinance"
 msgstr "PostFinance eFinance"
 
 #: pretix_saferpay/payment.py:146 pretix_saferpay/payment.py:616
-#: pretix_saferpay/payment.py:121 pretix_saferpay/payment.py:561
 msgid "SEPA Direct Debit"
-msgstr "SEPA-Lastschrift"
+msgstr "Mandat SEPA"
 
 #: pretix_saferpay/payment.py:151 pretix_saferpay/payment.py:624
-#: pretix_saferpay/payment.py:126 pretix_saferpay/payment.py:569
 msgid "Sofort"
-msgstr "Sofortüberweisung"
+msgstr "Sofort"
 
 #: pretix_saferpay/payment.py:260 pretix_saferpay/payment.py:291
-#: pretix_saferpay/payment.py:226 pretix_saferpay/payment.py:255
 msgid ""
 "The payment has not been captured successfully and can therefore not be "
 "refunded."
 msgstr ""
-"Die Zahlung wurde noch nicht verbucht und kann daher nicht erstattet werden."
+"Le paiement n’a pas été saisi avec succès et ne peut donc pas être remboursé."
 
 #: pretix_saferpay/payment.py:358 pretix_saferpay/payment.py:486
-#: pretix_saferpay/views.py:116 pretix_saferpay/payment.py:320
-#: pretix_saferpay/payment.py:448 pretix_saferpay/views.py:102
+#: pretix_saferpay/views.py:116
 msgid ""
 "We had trouble communicating with Saferpay. Please try again and get in "
 "touch with us if this problem persists."
 msgstr ""
-"Wir konnten Saferpay nicht erreichen. Bitte probieren Sie es erneut und "
-"kontaktieren Sie uns, wenn das Problem fortbesteht."
+"Nous avons eu du mal à communiquer avec Saferpay. Veuillez réessayer et nous "
+"contacter si ce problème persiste."
 
-#: pretix_saferpay/payment.py:364 pretix_saferpay/payment.py:326
+#: pretix_saferpay/payment.py:364
 msgid ""
 "The Saferpay plugin is operating in test mode. No money will actually be "
 "transferred."
 msgstr ""
-"Das Saferpay-Plugin befindet sich im Testmodus. Kein Geld wird übertragen."
+"Le plugin Saferpay fonctionne en mode test. Aucun argent ne sera réellement "
+"transféré."
 
-#: pretix_saferpay/payment.py:522 pretix_saferpay/payment.py:484
+#: pretix_saferpay/payment.py:522
 msgid "Credit card via Saferpay"
-msgstr "Kreditkarte via Saferpay"
+msgstr "Carte bancaire via Saferpay"
 
-#: pretix_saferpay/payment.py:523 pretix_saferpay/payment.py:69
-#: pretix_saferpay/payment.py:485
+#: pretix_saferpay/payment.py:523
 msgid "Credit card"
-msgstr "Kreditkarte"
+msgstr "Carte de crédit"
 
-#: pretix_saferpay/payment.py:545 pretix_saferpay/payment.py:491
+#: pretix_saferpay/payment.py:545
 msgid "Bancontact via Saferpay"
 msgstr "Bancontact via Saferpay"
 
-#: pretix_saferpay/payment.py:552 pretix_saferpay/payment.py:498
+#: pretix_saferpay/payment.py:552
 msgid "ePrzelewy via Saferpay"
 msgstr "ePrzelewy via Saferpay"
 
-#: pretix_saferpay/payment.py:559 pretix_saferpay/payment.py:505
+#: pretix_saferpay/payment.py:559
 msgid "EPS via Saferpay"
 msgstr "EPS via Saferpay"
 
-#: pretix_saferpay/payment.py:568 pretix_saferpay/payment.py:514
+#: pretix_saferpay/payment.py:568
 msgid "giropay via Saferpay"
 msgstr "giropay via Saferpay"
 
-#: pretix_saferpay/payment.py:577 pretix_saferpay/payment.py:523
+#: pretix_saferpay/payment.py:577
 msgid "iDEAL via Saferpay"
 msgstr "iDEAL via Saferpay"
 
-#: pretix_saferpay/payment.py:586 pretix_saferpay/payment.py:532
+#: pretix_saferpay/payment.py:586
 msgid "paydirekt via Saferpay"
 msgstr "paydirekt via Saferpay"
 
-#: pretix_saferpay/payment.py:587 pretix_saferpay/payment.py:533
+#: pretix_saferpay/payment.py:587
 msgid "paydirekt"
 msgstr "paydirekt"
 
-#: pretix_saferpay/payment.py:593 pretix_saferpay/payment.py:539
+#: pretix_saferpay/payment.py:593
 msgid "PayPal via Saferpay"
 msgstr "PayPal via Saferpay"
 
-#: pretix_saferpay/payment.py:601 pretix_saferpay/payment.py:546
+#: pretix_saferpay/payment.py:601
 msgid "PostFinance Card via Saferpay"
 msgstr "PostFinance Card via Saferpay"
 
-#: pretix_saferpay/payment.py:608 pretix_saferpay/payment.py:553
+#: pretix_saferpay/payment.py:608
 msgid "PostFinance eFinance via Saferpay"
 msgstr "PostFinance eFinance via Saferpay"
 
-#: pretix_saferpay/payment.py:615 pretix_saferpay/payment.py:560
+#: pretix_saferpay/payment.py:615
 msgid "SEPA Direct Debit via Saferpay"
-msgstr "SEPA-Lastschrift via Saferpay"
+msgstr "Prélèvement SEPA via Saferpay"
 
-#: pretix_saferpay/payment.py:623 pretix_saferpay/payment.py:568
+#: pretix_saferpay/payment.py:623
 msgid "Sofort via Saferpay"
 msgstr "Sofort via Saferpay"
 
@@ -218,15 +211,15 @@ msgstr "TWINT via Saferpay"
 
 #: pretix_saferpay/signals.py:34
 msgid "Payment captured."
-msgstr "Zahlung verbucht."
+msgstr "Paiement saisi."
 
 #: pretix_saferpay/signals.py:35
 msgid "Payment authorized."
-msgstr "Zahlung autorisiert."
+msgstr "Paiement autorisé."
 
 #: pretix_saferpay/signals.py:39
 msgid "Saferpay reported an event: {}"
-msgstr "Saferpay hat ein Ereignis gemeldet: {}"
+msgstr "Saferpay a signalé un événement : {}"
 
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:3
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_form.html:3
@@ -234,13 +227,14 @@ msgid ""
 "After you submitted your order, we will redirect you to Saferpay to complete "
 "your payment. You will then be redirected back here to get your tickets."
 msgstr ""
-"Nach Abschluss Ihrer Bestellung leiten wir Sie zu Saferpay zur Zahlung um. "
-"Sie werden danach hierher zurückgeleitet um Ihre Tickets zu erhalten."
+"Après avoir soumis votre commande, nous vous redirigerons vers Saferpay pour "
+"finaliser votre paiement. Vous serez ensuite redirigé ici pour obtenir vos "
+"billets."
 
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
 #: pretix_saferpay/templates/pretix_saferpay/control.html:15
 msgid "Payment method"
-msgstr "Zahlungsmethode"
+msgstr "Mode de paiement"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:6
 msgid "ID"
@@ -248,88 +242,79 @@ msgstr "ID"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:8
 msgid "Status"
-msgstr "Status"
+msgstr "Statut"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:10
 msgid "Date"
-msgstr "Datum"
+msgstr "Date"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:12
 msgid "SIX Reference"
-msgstr "SIX-Referenz"
+msgstr "Référence SIX"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:17
 msgid "Payment source"
-msgstr "Zahlungsquelle"
+msgstr "origine du paiement"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:24
 msgid "Error message"
-msgstr "Fehlermeldung"
+msgstr "Message d'erreur"
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:4
 msgid ""
 "We're waiting for an answer from the payment provider regarding your "
 "payment. Please contact us if this takes more than a few days."
 msgstr ""
-"Wir warten auf eine Antwort des Zahlungsdienstleisters bezüglich Ihrer "
-"Zahlung. Bitte kontaktieren Sie uns, falls dies mehr als ein paar Tage "
-"dauert."
+"Nous attendons une réponse du fournisseur de paiement concernant votre "
+"paiement. Veuillez nous contacter si cela prend plus de quelques jours."
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:9
 msgid ""
 "The payment transaction could not be completed for the following reason:"
-msgstr "Die Zahlung konnte aus folgendem Grund nicht abgeschlossen werden:"
+msgstr ""
+"L’opération de paiement n’a pas pu être effectuée pour la raison suivante :"
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:16
 msgid "Unknown reason"
-msgstr "Unbekannter Grund"
+msgstr "Raison inconnue"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:17
 msgid "The payment process has started in a new window."
-msgstr "Der Zahlungsvorgang wird in einem neuen Fenster fortgesetzt."
+msgstr "Le processus de paiement a commencé dans une nouvelle fenêtre."
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
 msgid "The window to enter your payment data was not opened or was closed?"
 msgstr ""
-"Das Fenster zur Eingabe der Zahlungsdaten wurde geschlossen oder nie "
-"geöffnet?"
+"La fenêtre de saisie de vos données de paiement n’a pas été ouverte ou a été "
+"fermée ?"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:24
 msgid "Click here in order to open the window."
-msgstr "Hier klicken um das Fenster zu öffnen."
+msgstr "Cliquez ici pour ouvrir la fenêtre."
 
-#: pretix_saferpay/views.py:156 pretix_saferpay/views.py:140
+#: pretix_saferpay/views.py:156
 msgid ""
 "We received your payment but were unable to mark your ticket as the server "
 "was too busy. Please check beck in a couple of minutes."
 msgstr ""
-"Wir haben die Zahlung erhalten, konnten die Bestellung aber nicht als "
-"bezahlt markieren, da der Server zu beschäftigt war. Wir versuchen es in ein "
-"paar Minuten erneut."
+"Nous avons reçu votre paiement mais n’avons pas pu marquer votre ticket car "
+"le serveur était trop occupé. S’il vous plaît vérifier beck dans quelques "
+"minutes."
 
-#: pretix_saferpay/views.py:160 pretix_saferpay/views.py:144
+#: pretix_saferpay/views.py:160
 msgid ""
 "We received your payment but were unable to mark your ticket as paid as one "
 "of your ordered products is sold out. Please contact the event organizer for "
 "further steps."
 msgstr ""
-"Wir haben die Zahlung erhalten, aber konnten die Bestellung nicht als "
-"bezahlt markieren, da eines der Produkte ausverkauft ist. Kontaktieren Sie "
-"bitte den Veranstalter für weitere Schritte."
+"Nous avons reçu votre paiement, mais nous n’avons pas pu marquer votre "
+"billet comme payé car l’un de vos produits commandés est épuisé. Veuillez "
+"contacter l’organisateur de l’événement pour plus d’informations."
 
-#: pretix_saferpay/views.py:183 pretix_saferpay/views.py:166
+#: pretix_saferpay/views.py:183
 msgid ""
 "Sorry, there was an error in the payment process. Please check the link in "
 "your emails to continue."
 msgstr ""
-"Entschuldigen Sie bitte, es gab einen Fehler im Bezahlvorgang. Bitte klicken "
-"Sie auf den Link in der E-Mail, die wir Ihnen geschickt haben, um "
-"fortzufahren."
-
-#: pretix_saferpay/__init__.py:10
-msgid "Saferpay (SIX) implementation for pretix"
-msgstr "Saferpay (SIX)-Anbindung für pretix"
-
-#: pretix_saferpay/__init__.py:12
-msgid "This allows to accept payments through saferpay."
-msgstr "Diese Erweiterung erlaubt die Zahlungsabwicklung mit Saferpay."
+"Désolé, une erreur s'est produite lors du traitement du paiement. SVP "
+"vérifiez le lien dans vos courriels pour continuer."

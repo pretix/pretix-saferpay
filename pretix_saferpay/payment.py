@@ -638,16 +638,7 @@ class SaferpayMethod(BasePaymentProvider):
                 payment.info_data = req.json()
             except:
                 payment.info_data = {"error": True, "detail": req.text}
-            payment.state = OrderPayment.PAYMENT_STATE_FAILED
-            payment.save()
-            payment.order.log_action(
-                "pretix.event.order.payment.failed",
-                {
-                    "local_id": payment.local_id,
-                    "provider": payment.provider,
-                    "data": payment.info_data,
-                },
-            )
+            payment.fail(log_data=payment.info_data)
             raise PaymentException(
                 _(
                     "We had trouble communicating with Saferpay. Please try again and get in touch "
@@ -656,17 +647,8 @@ class SaferpayMethod(BasePaymentProvider):
             )
         except RequestException as e:
             logger.exception("Saferpay request error")
-            payment.info_data = {"error": True, "detail": str(e)}
-            payment.state = OrderPayment.PAYMENT_STATE_FAILED
-            payment.save()
-            payment.order.log_action(
-                "pretix.event.order.payment.failed",
-                {
-                    "local_id": payment.local_id,
-                    "provider": payment.provider,
-                    "data": payment.info_data,
-                },
-            )
+            data = {"error": True, "detail": str(e)}
+            payment.fail(info=data, log_data=data)
             raise PaymentException(
                 _(
                     "We had trouble communicating with Saferpay. Please try again and get in touch "

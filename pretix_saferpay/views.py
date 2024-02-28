@@ -134,14 +134,7 @@ def capture(payment: OrderPayment):
             raise PaymentException("Unknown payment state")
 
     except requests.exceptions.HTTPError as e:
-        payment.order.log_action(
-            "pretix.event.order.payment.failed",
-            {
-                "local_id": payment.local_id,
-                "provider": payment.provider,
-                "data": e.response.text,
-            },
-        )
+        payment.fail(log_data={"code": e.response.status_code, "reason": e.response.text})
         raise PaymentException(
             _(
                 "We had trouble communicating with Saferpay. Please try again and get in touch "
@@ -149,14 +142,7 @@ def capture(payment: OrderPayment):
             )
         )
     except requests.exceptions.RequestException as e:
-        payment.order.log_action(
-            "pretix.event.order.payment.failed",
-            {
-                "local_id": payment.local_id,
-                "provider": payment.provider,
-                "data": str(e),
-            },
-        )
+        payment.fail(log_data={"reason": str(e)})
         raise PaymentException(
             _(
                 "We had trouble communicating with Saferpay. Please try again and get in touch "
@@ -230,15 +216,7 @@ class ReturnView(SaferpayOrderView, View):
                         ),
                     )
         elif kwargs.get("action") == "fail":
-            self.order.log_action(
-                "pretix.event.order.payment.failed",
-                {
-                    "local_id": self.payment.local_id,
-                    "provider": self.payment.provider,
-                },
-            )
-            self.payment.state = OrderPayment.PAYMENT_STATE_FAILED
-            self.payment.save(update_fields=["state"])
+            self.payment.fail(log_data={"reason": "ReturnView called with action=fail"})
         elif kwargs.get("action") == "abort":
             self.order.log_action(
                 "pretix.event.order.payment.canceled",

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2024-05-15 21:00+0000\n"
+"PO-Revision-Date: 2024-05-21 21:00+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Ukrainian <https://translate.pretix.eu/projects/pretix/"
 "pretix-plugin-saferpay/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.5.3\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #: pretix_saferpay/__init__.py:10
 msgid "Saferpay (SIX)"
@@ -146,7 +146,8 @@ msgid ""
 "The Saferpay plugin is operating in test mode. No money will actually be "
 "transferred."
 msgstr ""
-"Плагін Saferpay працює у тестовому режимі. Гроші перераховані не будуть."
+"Плагін Saferpay працює у тестовому режимі. Фактично гроші не будуть "
+"перераховані."
 
 #: pretix_saferpay/payment.py:522
 msgid "Credit card via Saferpay"
@@ -227,7 +228,7 @@ msgid ""
 "your payment. You will then be redirected back here to get your tickets."
 msgstr ""
 "Після завершення замовлення ми перенаправимо Вас до Saferpay для здійснення "
-"оплати. Потім, щоб отримати квитки, Ви будете перенаправлені назад сюди."
+"оплати. Потім, для отримання квитків, Ви будете перенаправлені назад сюди."
 
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
 #: pretix_saferpay/templates/pretix_saferpay/control.html:15
@@ -277,7 +278,7 @@ msgstr "Невідома причина"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:17
 msgid "The payment process has started in a new window."
-msgstr "Процес оплати розпочався в новому вікні."
+msgstr "Процес оплати розпочався у новому вікні."
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
 msgid "The window to enter your payment data was not opened or was closed?"
@@ -311,5 +312,5 @@ msgid ""
 "Sorry, there was an error in the payment process. Please check the link in "
 "your emails to continue."
 msgstr ""
-"На жаль, під час оплати сталася помилка. Для продовження, перевірте, будь "
+"На жаль, під час оплати виникла помилка. Для продовження, перевірте, будь "
 "ласка, посилання у своїх електронних листах."

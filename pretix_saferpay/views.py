@@ -154,9 +154,8 @@ def capture(payment: OrderPayment):
 class SaferpayOrderView:
     def dispatch(self, request, *args, **kwargs):
         try:
-            self.order = Order.get_with_secret_check(
-                qs=request.event.orders, code=kwargs["order"], received_secret=kwargs["hash"],
-                tag="plugins:pretix_saferpay"
+            self.order = request.event.orders.get_with_secret_check(
+                code=kwargs["order"], received_secret=kwargs["hash"], tag="plugins:pretix_saferpay"
             )
         except Order.DoesNotExist:
             raise Http404("")

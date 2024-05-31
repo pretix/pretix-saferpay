@@ -10,19 +10,10 @@ logger = logging.getLogger(__name__)
 @receiver(register_payment_providers, dispatch_uid="payment_saferpay")
 def register_payment_provider(sender, **kwargs):
     from .payment import (
-        SaferpayBancontact,
-        SaferpayEPrzelewy,
-        SaferpayCC,
-        SaferpayEPS,
-        SaferpayGiropay,
-        SaferpayIdeal,
-        SaferpayPaydirekt,
-        SaferpayPayPal,
-        SaferpayPostfinanceCard,
-        SaferpayPostfinanceEfinance,
-        SaferpaySepadebit,
-        SaferpaySettingsHolder,
-        SaferpaySofort,
+        SaferpayBancontact, SaferpayCC, SaferpayEPrzelewy, SaferpayEPS,
+        SaferpayGiropay, SaferpayIdeal, SaferpayPaydirekt, SaferpayPayPal,
+        SaferpayPostfinanceCard, SaferpayPostfinanceEfinance,
+        SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort,
         SaferpayTwint,
     )
 

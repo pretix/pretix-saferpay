@@ -334,7 +334,7 @@ class SaferpayMethod(BasePaymentProvider):
                 else:
                     try:
                         err = req.json()
-                    except:
+                    except Exception:
                         req.raise_for_status()
                     else:
                         if err.get("ErrorName") not in (
@@ -414,7 +414,7 @@ class SaferpayMethod(BasePaymentProvider):
             logger.exception("Saferpay error: %s" % req.text)
             try:
                 refund.info_data = req.json()
-            except:
+            except Exception:
                 refund.info_data = {"error": True, "detail": req.text}
             refund.state = OrderRefund.REFUND_STATE_FAILED
             refund.save()
@@ -428,15 +428,15 @@ class SaferpayMethod(BasePaymentProvider):
             )
             if "ProcessorMessage" in refund.info_data:
                 raise PaymentException(
-                    _(
-                        "Saferpay returned the following error: {error}"
-                    ).format(error=refund.info_data.get('ProcessorMessage'))
+                    _("Saferpay returned the following error: {error}").format(
+                        error=refund.info_data.get("ProcessorMessage")
+                    )
                 )
             elif "ErrorMessage" in refund.info_data:
                 raise PaymentException(
-                    _(
-                        "Saferpay returned the following error: {error}"
-                    ).format(error=refund.info_data.get('ErrorMessage'))
+                    _("Saferpay returned the following error: {error}").format(
+                        error=refund.info_data.get("ErrorMessage")
+                    )
                 )
             raise PaymentException(
                 _(
@@ -481,7 +481,7 @@ class SaferpayMethod(BasePaymentProvider):
             auth=(self.settings.get("api_user"), self.settings.get("api_pass")),
             timeout=20,
             *args,
-            **kwargs
+            **kwargs,
         )
         return r
 
@@ -494,7 +494,7 @@ class SaferpayMethod(BasePaymentProvider):
             auth=(self.settings.get("api_user"), self.settings.get("api_pass")),
             timeout=20,
             *args,
-            **kwargs
+            **kwargs,
         )
         return r
 
@@ -633,7 +633,7 @@ class SaferpayMethod(BasePaymentProvider):
             logger.exception("Saferpay error: %s" % req.text)
             try:
                 payment.info_data = req.json()
-            except:
+            except Exception:
                 payment.info_data = {"error": True, "detail": req.text}
             payment.fail(log_data=payment.info_data)
             raise PaymentException(

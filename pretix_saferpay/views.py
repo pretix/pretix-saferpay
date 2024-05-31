@@ -134,7 +134,9 @@ def capture(payment: OrderPayment):
             raise PaymentException("Unknown payment state")
 
     except requests.exceptions.HTTPError as e:
-        payment.fail(log_data={"code": e.response.status_code, "reason": e.response.text})
+        payment.fail(
+            log_data={"code": e.response.status_code, "reason": e.response.text}
+        )
         raise PaymentException(
             _(
                 "We had trouble communicating with Saferpay. Please try again and get in touch "

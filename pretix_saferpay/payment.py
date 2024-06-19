@@ -9,7 +9,7 @@ from django.conf import settings
 from django.core import signing
 from django.http import HttpRequest
 from django.template.loader import get_template
-from django.utils.translation import gettext_lazy as _, pgettext
+from django.utils.translation import gettext_lazy as _, pgettext, gettext
 from pretix.base.decimal import round_decimal
 from pretix.base.models import Event, OrderPayment, OrderRefund
 from pretix.base.payment import BasePaymentProvider, PaymentException
@@ -104,6 +104,20 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                     "method_amex",
                     forms.BooleanField(
                         label=_("American Express"),
+                        required=False,
+                    ),
+                ),
+                (
+                    "method_applepay",
+                    forms.BooleanField(
+                        label=_("Apple Pay"),
+                        required=False,
+                    ),
+                ),
+                (
+                    "method_googlepay",
+                    forms.BooleanField(
+                        label=_("Google Pay"),
                         required=False,
                     ),
                 ),
@@ -204,6 +218,7 @@ class SaferpayMethod(BasePaymentProvider):
     refunds_allowed = True
     cancel_flow = True
     payment_methods = []
+    payment_method_wallets = []
 
     def __init__(self, event: Event):
         super().__init__(event)
@@ -567,6 +582,7 @@ class SaferpayMethod(BasePaymentProvider):
                 ),
             },
             "PaymentMethods": self.payment_methods,
+            "Wallets": self.payment_method_wallets,
             "Payer": {
                 "LanguageCode": self.get_locale(payment.order.locale),
             },
@@ -700,7 +716,6 @@ class SaferpayMethod(BasePaymentProvider):
 class SaferpayCC(SaferpayMethod):
     method = "creditcard"
     verbose_name = _("Credit card via Saferpay")
-    public_name = _("Credit card")
 
     @property
     def payment_methods(self):
@@ -716,6 +731,24 @@ class SaferpayCC(SaferpayMethod):
         if self.settings.get("method_amex", as_type=bool):
             payment_methods.append("AMEX")
         return payment_methods
+
+    @property
+    def payment_method_wallets(self):
+        payment_methods = []
+        if self.settings.get("method_applepay", as_type=bool):
+            payment_methods.append("APPLEPAY")
+        if self.settings.get("method_googlepay", as_type=bool):
+            payment_methods.append("GOOGLEPAY")
+        return payment_methods
+
+    @property
+    def public_name(self) -> str:
+        payment_methods = [gettext("Credit card")]
+        if self.settings.get("method_applepay", as_type=bool):
+            payment_methods.append(gettext("Apple Pay"))
+        if self.settings.get("method_googlepay", as_type=bool):
+            payment_methods.append(gettext("Google Pay"))
+        return ", ".join(payment_methods)
 
     @property
     def is_enabled(self) -> bool:

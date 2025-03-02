@@ -8,123 +8,130 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-02 19:00+0000\n"
+"Last-Translator: Tim Maurizio Dullaart <Tim.maurizio@gmail.com>\n"
+"Language-Team: Dutch <https://translate.pretix.eu/projects/pretix/"
+"pretix-plugin-saferpay/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.1\n"
 
 #: pretix_saferpay/__init__.py:10
 msgid "Saferpay (SIX)"
-msgstr ""
+msgstr "Saferpay (SIX)"
 
 #: pretix_saferpay/__init__.py:13
 msgid ""
 "Accept payments through Saferpay, a payment method offered by Worldline "
 "(formerly SIX Payment Services)."
 msgstr ""
+"Accepteer betalingen via Saferpay, een betaalmethode aangeboden door "
+"Worldline (voorheen SIX Payment Services)."
 
 #: pretix_saferpay/payment.py:28
 msgid "Saferpay"
-msgstr ""
+msgstr "Saferpay"
 
 #: pretix_saferpay/payment.py:41
 msgid "Endpoint"
-msgstr ""
+msgstr "Endpoint"
 
 #: pretix_saferpay/payment.py:44
 msgctxt "saferpay"
 msgid "Live"
-msgstr ""
+msgstr "Live"
 
 #: pretix_saferpay/payment.py:45
 msgctxt "saferpay"
 msgid "Testing"
-msgstr ""
+msgstr "Testing"
 
 #: pretix_saferpay/payment.py:50
 msgid "API Username"
-msgstr ""
+msgstr "API Gebruikersnaam"
 
 #: pretix_saferpay/payment.py:54
 msgid "API Password"
-msgstr ""
+msgstr "API Wachtwoord"
 
 #: pretix_saferpay/payment.py:58
 msgid "Customer ID"
-msgstr ""
+msgstr "Klantnummer"
 
 #: pretix_saferpay/payment.py:62
 msgid "Terminal ID"
-msgstr ""
+msgstr "Terminal ID"
 
 #: pretix_saferpay/payment.py:69
 msgid "VISA"
-msgstr ""
+msgstr "VISA"
 
 #: pretix_saferpay/payment.py:74
 msgid "MasterCard"
-msgstr ""
+msgstr "MasterCard"
 
 #: pretix_saferpay/payment.py:79
 msgid "Diners"
-msgstr ""
+msgstr "Diners"
 
 #: pretix_saferpay/payment.py:84
 msgid "JCB"
-msgstr ""
+msgstr "JCB"
 
 #: pretix_saferpay/payment.py:89
 msgid "American Express"
-msgstr ""
+msgstr "American Express"
 
 #: pretix_saferpay/payment.py:94 pretix_saferpay/payment.py:546
 msgid "Bancontact"
-msgstr ""
+msgstr "Bancontact"
 
 #: pretix_saferpay/payment.py:99 pretix_saferpay/payment.py:553
 msgid "ePrzelewy"
-msgstr ""
+msgstr "ePrzelewy"
 
 #: pretix_saferpay/payment.py:104 pretix_saferpay/payment.py:560
 msgid "eps"
-msgstr ""
+msgstr "eps"
 
 #: pretix_saferpay/payment.py:109 pretix_saferpay/payment.py:569
 msgid "giropay"
-msgstr ""
+msgstr "giropay"
 
 #: pretix_saferpay/payment.py:114 pretix_saferpay/payment.py:578
 msgid "iDEAL"
-msgstr ""
+msgstr "iDEAL"
 
 #: pretix_saferpay/payment.py:131 pretix_saferpay/payment.py:594
 msgid "PayPal"
-msgstr ""
+msgstr "PayPal"
 
 #: pretix_saferpay/payment.py:136 pretix_saferpay/payment.py:602
 msgid "PostFinance Card"
-msgstr ""
+msgstr "PostFinance Card"
 
 #: pretix_saferpay/payment.py:141 pretix_saferpay/payment.py:609
 msgid "PostFinance eFinance"
-msgstr ""
+msgstr "PostFinance eFinance"
 
 #: pretix_saferpay/payment.py:146 pretix_saferpay/payment.py:616
 msgid "SEPA Direct Debit"
-msgstr ""
+msgstr "SEPA Automatische Incasso"
 
 #: pretix_saferpay/payment.py:151 pretix_saferpay/payment.py:624
 msgid "Sofort"
-msgstr ""
+msgstr "Sofort"
 
 #: pretix_saferpay/payment.py:260 pretix_saferpay/payment.py:291
 msgid ""
 "The payment has not been captured successfully and can therefore not be "
 "refunded."
 msgstr ""
+"De betaling is nog niet goed ontvangen en kan daardoor niet worden "
+"geretourneerd."
 
 #: pretix_saferpay/payment.py:358 pretix_saferpay/payment.py:486
 #: pretix_saferpay/views.py:116
@@ -132,84 +139,86 @@ msgid ""
 "We had trouble communicating with Saferpay. Please try again and get in "
 "touch with us if this problem persists."
 msgstr ""
+"Wij hadden problemen in de communicatie met Saferpay. Probeer het opnieuw en "
+"neem contact met ons op als dit probleem aanhoud."
 
 #: pretix_saferpay/payment.py:364
 msgid ""
 "The Saferpay plugin is operating in test mode. No money will actually be "
 "transferred."
-msgstr ""
+msgstr "De Saferpay plugin zit in test modus. Geen geld zal worden overgemaakt."
 
 #: pretix_saferpay/payment.py:522
 msgid "Credit card via Saferpay"
-msgstr ""
+msgstr "Creditcard via Saferpay"
 
 #: pretix_saferpay/payment.py:523
 msgid "Credit card"
-msgstr ""
+msgstr "Creditcard"
 
 #: pretix_saferpay/payment.py:545
 msgid "Bancontact via Saferpay"
-msgstr ""
+msgstr "Bancontact via Saferpay"
 
 #: pretix_saferpay/payment.py:552
 msgid "ePrzelewy via Saferpay"
-msgstr ""
+msgstr "ePrzelewy via Saferpay"
 
 #: pretix_saferpay/payment.py:559
 msgid "EPS via Saferpay"
-msgstr ""
+msgstr "EPS via Saferpay"
 
 #: pretix_saferpay/payment.py:568
 msgid "giropay via Saferpay"
-msgstr ""
+msgstr "giropay via Saferpay"
 
 #: pretix_saferpay/payment.py:577
 msgid "iDEAL via Saferpay"
-msgstr ""
+msgstr "iDEAL via Saferpay"
 
 #: pretix_saferpay/payment.py:586
 msgid "paydirekt via Saferpay"
-msgstr ""
+msgstr "paydirekt via Saferpay"
 
 #: pretix_saferpay/payment.py:587
 msgid "paydirekt"
-msgstr ""
+msgstr "paydirekt"
 
 #: pretix_saferpay/payment.py:593
 msgid "PayPal via Saferpay"
-msgstr ""
+msgstr "PayPal via Saferpay"
 
 #: pretix_saferpay/payment.py:601
 msgid "PostFinance Card via Saferpay"
-msgstr ""
+msgstr "PostFinance Card via Saferpay"
 
 #: pretix_saferpay/payment.py:608
 msgid "PostFinance eFinance via Saferpay"
-msgstr ""
+msgstr "PostFinance eFinance via Saferpay"
 
 #: pretix_saferpay/payment.py:615
 msgid "SEPA Direct Debit via Saferpay"
-msgstr ""
+msgstr "SEPA Automatische Incasso via Saferpay"
 
 #: pretix_saferpay/payment.py:623
 msgid "Sofort via Saferpay"
-msgstr ""
+msgstr "Sofort via Saferpay"
 
 #: pretix_saferpay/payment.py:632
 msgid "TWINT via Saferpay"
-msgstr ""
+msgstr "TWINT via Saferpay"
 
 #: pretix_saferpay/signals.py:34
 msgid "Payment captured."
-msgstr ""
+msgstr "Betaling ontvangen."
 
 #: pretix_saferpay/signals.py:35
 msgid "Payment authorized."
-msgstr ""
+msgstr "Betaling goedgekeurd."
 
 #: pretix_saferpay/signals.py:39
 msgid "Saferpay reported an event: {}"
-msgstr ""
+msgstr "Saferpay heeft een evenement gemeld: {}"
 
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:3
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_form.html:3
@@ -217,68 +226,76 @@ msgid ""
 "After you submitted your order, we will redirect you to Saferpay to complete "
 "your payment. You will then be redirected back here to get your tickets."
 msgstr ""
+"Nadat je bestelling is afgerond, sturen we je door naar Saferpay om je "
+"betaling te voldoen. Je zal daarna terug hier naar toe worden gestuurd voor "
+"jouw tickets."
 
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
 #: pretix_saferpay/templates/pretix_saferpay/control.html:15
 msgid "Payment method"
-msgstr ""
+msgstr "Betaalmethode"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:6
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:8
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:10
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:12
 msgid "SIX Reference"
-msgstr ""
+msgstr "SIX Referentie"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:17
 msgid "Payment source"
-msgstr ""
+msgstr "Betalingsbron"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:24
 msgid "Error message"
-msgstr ""
+msgstr "Foutmelding"
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:4
 msgid ""
 "We're waiting for an answer from the payment provider regarding your "
 "payment. Please contact us if this takes more than a few days."
 msgstr ""
+"We wachten op een antwoord van de betalingsprovider over uw betaling. Neem "
+"contact met ons op als dit langer dan een paar dagen duurt."
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:9
 msgid ""
 "The payment transaction could not be completed for the following reason:"
-msgstr ""
+msgstr "De betaling kon om de volgende reden niet worden voltooid:"
 
 #: pretix_saferpay/templates/pretix_saferpay/pending.html:16
 msgid "Unknown reason"
-msgstr ""
+msgstr "Onbekende reden"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:17
 msgid "The payment process has started in a new window."
-msgstr ""
+msgstr "Het betalingsproces is begonnen in een nieuwe venster."
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
 msgid "The window to enter your payment data was not opened or was closed?"
 msgstr ""
+"Het venster om je betaling in te voeren is niet geopend of was gesloten?"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:24
 msgid "Click here in order to open the window."
-msgstr ""
+msgstr "Klik hier om het venster te openen."
 
 #: pretix_saferpay/views.py:156
 msgid ""
 "We received your payment but were unable to mark your ticket as the server "
 "was too busy. Please check beck in a couple of minutes."
 msgstr ""
+"We hebben je betaling ontvangen, maar konden jouw ticket niet als betaald "
+"markeren, omdat de server overbelast was. Kijk over een paar minuten terug."
 
 #: pretix_saferpay/views.py:160
 msgid ""
@@ -286,9 +303,14 @@ msgid ""
 "of your ordered products is sold out. Please contact the event organizer for "
 "further steps."
 msgstr ""
+"We hebben je betaling ontvangen maar konden het niet markeren als betaald "
+"aangezien een van je producten uitverkocht is. Neem alsjeblieft contact met "
+"de organisator van het evenement voor verdere instructies."
 
 #: pretix_saferpay/views.py:183
 msgid ""
 "Sorry, there was an error in the payment process. Please check the link in "
 "your emails to continue."
 msgstr ""
+"Sorry, er was een fout in het betalingsproces. Klik op de link in je e-mail "
+"om door te gaan."

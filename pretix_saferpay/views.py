@@ -156,21 +156,11 @@ def capture(payment: OrderPayment):
 class SaferpayOrderView:
     def dispatch(self, request, *args, **kwargs):
         try:
-            self.order = request.event.orders.get(code=kwargs["order"])
-            if (
-                hashlib.sha1(self.order.secret.lower().encode()).hexdigest()
-                != kwargs["hash"].lower()
-            ):
-                raise Http404("")
+            self.order = request.event.orders.get_with_secret_check(
+                code=kwargs["order"], received_secret=kwargs["hash"], tag="plugins:pretix_saferpay"
+            )
         except Order.DoesNotExist:
-            # Do a hash comparison as well to harden timing attacks
-            if (
-                "abcdefghijklmnopq".lower()
-                == hashlib.sha1("abcdefghijklmnopq".encode()).hexdigest()
-            ):
-                raise Http404("")
-            else:
-                raise Http404("")
+            raise Http404("")
         return super().dispatch(request, *args, **kwargs)
 
     @cached_property

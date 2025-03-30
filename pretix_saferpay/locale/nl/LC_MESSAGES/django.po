@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2025-03-02 19:00+0000\n"
-"Last-Translator: Tim Maurizio Dullaart <Tim.maurizio@gmail.com>\n"
+"PO-Revision-Date: 2025-03-30 17:00+0000\n"
+"Last-Translator: Jan Van Haver <jan.van.haver@gmail.com>\n"
 "Language-Team: Dutch <https://translate.pretix.eu/projects/pretix/"
 "pretix-plugin-saferpay/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: pretix_saferpay/__init__.py:10
 msgid "Saferpay (SIX)"
@@ -233,7 +233,7 @@ msgstr ""
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
 #: pretix_saferpay/templates/pretix_saferpay/control.html:15
 msgid "Payment method"
-msgstr "Betaalmethode"
+msgstr "Betalingsmethode"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:6
 msgid "ID"

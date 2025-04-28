@@ -1,6 +1,8 @@
 import hashlib
 import json
 import logging
+from decimal import Decimal
+
 import requests
 import uuid
 from collections import OrderedDict
@@ -11,7 +13,7 @@ from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import gettext_lazy as _, pgettext, gettext
 from pretix.base.decimal import round_decimal
-from pretix.base.models import Event, OrderPayment, OrderRefund
+from pretix.base.models import Event, OrderPayment, OrderRefund, Order
 from pretix.base.payment import BasePaymentProvider, PaymentException
 from pretix.base.settings import SettingsSandbox
 from pretix.multidomain.urlreverse import build_absolute_uri
@@ -177,17 +179,25 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                         required=False,
                     ),
                 ),
+                # Deprecated
+                # (
+                #     "method_postfinance_card",
+                #     forms.BooleanField(
+                #         label=_("PostFinance Card"),
+                #         required=False,
+                #     ),
+                # ),
+                # (
+                #     "method_postfinance_efinance",
+                #     forms.BooleanField(
+                #         label=_("PostFinance eFinance"),
+                #         required=False,
+                #     ),
+                # ),
                 (
-                    "method_postfinance_card",
+                    "method_postfinance_pay",
                     forms.BooleanField(
-                        label=_("PostFinance Card"),
-                        required=False,
-                    ),
-                ),
-                (
-                    "method_postfinance_efinance",
-                    forms.BooleanField(
-                        label=_("PostFinance eFinance"),
+                        label=_("PostFinance Pay"),
                         required=False,
                     ),
                 ),
@@ -817,12 +827,35 @@ class SaferpayPostfinanceCard(SaferpayMethod):
     public_name = _("PostFinance Card")
     payment_methods = ["POSTCARD"]
 
+    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
+        # Saferpay<>PostFinance Card was shut down May 1st 2024
+        return False
+
+    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
+        # Saferpay<>PostFinance Card was shut down May 1st 2024
+        return False
+
 
 class SaferpayPostfinanceEfinance(SaferpayMethod):
     method = "postfinance_efinance"
     verbose_name = _("PostFinance eFinance via Saferpay")
     public_name = _("PostFinance eFinance")
     payment_methods = ["POSTFINANCE"]
+
+    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
+        # Saferpay<>PostFinance eFinance was shut down May 1st 2024
+        return False
+
+    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
+        # Saferpay<>PostFinance eFinance was shut down May 1st 2024
+        return False
+
+
+class SaferpayPostfinancePay(SaferpayMethod):
+    method = "postfinance_pay"
+    verbose_name = _("PostFinance Pay via Saferpay")
+    public_name = _("PostFinance Pay")
+    payment_methods = ["POSTFINANCEPAY"]
 
 
 class SaferpaySepadebit(SaferpayMethod):

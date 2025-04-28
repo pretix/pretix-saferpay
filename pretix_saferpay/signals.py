@@ -12,7 +12,7 @@ def register_payment_provider(sender, **kwargs):
     from .payment import (
         SaferpayBancontact, SaferpayCC, SaferpayEPrzelewy, SaferpayEPS,
         SaferpayGiropay, SaferpayIdeal, SaferpayPaydirekt, SaferpayPayPal,
-        SaferpayPostfinanceCard, SaferpayPostfinanceEfinance,
+        SaferpayPostfinanceCard, SaferpayPostfinancePay, SaferpayPostfinanceEfinance,
         SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort,
         SaferpayTwint,
     )
@@ -28,6 +28,7 @@ def register_payment_provider(sender, **kwargs):
         SaferpayPayPal,
         SaferpayPostfinanceCard,
         SaferpayPostfinanceEfinance,
+        SaferpayPostfinancePay,
         SaferpaySepadebit,
         SaferpaySettingsHolder,
         SaferpaySofort,

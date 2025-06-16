@@ -144,13 +144,14 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                         required=False,
                     ),
                 ),
-                (
-                    "method_giropay",
-                    forms.BooleanField(
-                        label=_("giropay"),
-                        required=False,
-                    ),
-                ),
+                # Giropay has been retired as such it is not offered as a setting anymore.
+                # (
+                #     "method_giropay",
+                #     forms.BooleanField(
+                #         label=_("giropay"),
+                #         required=False,
+                #     ),
+                # ),
                 (
                     "method_ideal",
                     forms.BooleanField(
@@ -795,6 +796,14 @@ class SaferpayGiropay(SaferpayMethod):
     refunds_allowed = False
     cancel_flow = False
     payment_methods = ["GIROPAY"]
+
+    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
+        # giropay has shut down
+        return False
+
+    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
+        # giropay has shut down
+        return False
 
 
 class SaferpayIdeal(SaferpayMethod):

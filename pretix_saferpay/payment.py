@@ -604,9 +604,7 @@ class SaferpayMethod(BasePaymentProvider):
                     kwargs={
                         "order": payment.order.code,
                         "payment": payment.pk,
-                        "hash": hashlib.sha1(
-                            payment.order.secret.lower().encode()
-                        ).hexdigest(),
+                        "hash": payment.order.tagged_secret('plugins:pretix_saferpay'),
                         "action": "success",
                     },
                 ),
@@ -616,9 +614,7 @@ class SaferpayMethod(BasePaymentProvider):
                     kwargs={
                         "order": payment.order.code,
                         "payment": payment.pk,
-                        "hash": hashlib.sha1(
-                            payment.order.secret.lower().encode()
-                        ).hexdigest(),
+                        "hash": payment.order.tagged_secret('plugins:pretix_saferpay'),
                         "action": "fail",
                     },
                 ),
@@ -628,9 +624,7 @@ class SaferpayMethod(BasePaymentProvider):
                     kwargs={
                         "order": payment.order.code,
                         "payment": payment.pk,
-                        "hash": hashlib.sha1(
-                            payment.order.secret.lower().encode()
-                        ).hexdigest(),
+                        "hash": payment.order.tagged_secret('plugins:pretix_saferpay'),
                         "action": "abort",
                     },
                 ),

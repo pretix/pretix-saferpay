@@ -789,7 +789,7 @@ class SaferpayEPS(SaferpayMethod):
     payment_methods = ["EPS"]
 
 
-class SaferpayGiropay(SaferpayMethod, RetiredMethodMixin):
+class SaferpayGiropay(RetiredMethodMixin, SaferpayMethod):
     method = "giropay"
     verbose_name = _("giropay via Saferpay")
     public_name = _("giropay")
@@ -822,14 +822,14 @@ class SaferpayPayPal(SaferpayMethod):
     payment_methods = ["PAYPAL"]
 
 
-class SaferpayPostfinanceCard(SaferpayMethod, RetiredMethodMixin):
+class SaferpayPostfinanceCard(RetiredMethodMixin, SaferpayMethod):
     method = "postfinance_card"
     verbose_name = _("PostFinance Card via Saferpay")
     public_name = _("PostFinance Card")
     payment_methods = ["POSTCARD"]
 
 
-class SaferpayPostfinanceEfinance(SaferpayMethod, RetiredMethodMixin):
+class SaferpayPostfinanceEfinance(RetiredMethodMixin, SaferpayMethod):
     method = "postfinance_efinance"
     verbose_name = _("PostFinance eFinance via Saferpay")
     public_name = _("PostFinance eFinance")
@@ -851,7 +851,7 @@ class SaferpaySepadebit(SaferpayMethod):
     payment_methods = ["DIRECTDEBIT"]
 
 
-class SaferpaySofort(SaferpayMethod, RetiredMethodMixin):
+class SaferpaySofort(RetiredMethodMixin, SaferpayMethod):
     method = "sofort"
     verbose_name = _("Sofort via Saferpay")
     public_name = _("Sofort")

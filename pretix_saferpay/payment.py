@@ -871,8 +871,8 @@ class SaferpayTwint(SaferpayMethod):
 
 class SaferpayWero(SaferpayMethod):
     method = "wero"
-    verbose_name = _("WERO via Saferpay")
-    public_name = _("WERO")
+    verbose_name = _("Wero via Saferpay")
+    public_name = _("Wero")
     refunds_allowed = True
     cancel_flow = False
     payment_methods = ["WERO"]

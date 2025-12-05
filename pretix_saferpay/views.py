@@ -18,6 +18,7 @@ from pretix.base.models import Order, OrderPayment, Quota
 from pretix.base.payment import PaymentException
 from pretix.base.services.locking import LockTimeoutException
 from pretix.multidomain.urlreverse import build_absolute_uri, eventreverse
+from . import __spec_version__
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +66,7 @@ def handle_transaction_result(payment):
             "Payment/v1/Transaction/Capture",
             json={
                 "RequestHeader": {
-                    "SpecVersion": "1.10",
+                    "SpecVersion": __spec_version__,
                     "CustomerId": pprov.settings.customer_id,
                     "RequestId": str(uuid.uuid4()),
                     "RetryIndicator": 0,
@@ -189,47 +190,33 @@ class SaferpayOrderView:
 @method_decorator(xframe_options_exempt, "dispatch")
 class ReturnView(SaferpayOrderView, View):
     def get(self, request, *args, **kwargs):
-        if kwargs.get("action") == "success":
-            if self.payment.state not in (
-                OrderPayment.PAYMENT_STATE_CONFIRMED,
-                OrderPayment.PAYMENT_STATE_REFUNDED,
-                OrderPayment.PAYMENT_STATE_CANCELED,
-            ):
-                try:
-                    capture(self.payment)
-                except PaymentException as e:
-                    messages.error(self.request, str(e))
-                except LockTimeoutException:
-                    messages.error(
-                        self.request,
-                        _(
-                            "We received your payment but were unable to mark your ticket as "
-                            "the server was too busy. Please check back in a couple of "
-                            "minutes."
-                        ),
-                    )
-                except Quota.QuotaExceededException:
-                    messages.error(
-                        self.request,
-                        _(
-                            "We received your payment but were unable to mark your ticket as "
-                            "paid as one of your ordered products is sold out. Please contact "
-                            "the event organizer for further steps."
-                        ),
-                    )
-        elif kwargs.get("action") == "fail":
-            self.payment.fail(log_data={"reason": "ReturnView called with action=fail"})
-        elif kwargs.get("action") == "abort":
-            self.order.log_action(
-                "pretix.event.order.payment.canceled",
-                {
-                    "local_id": self.payment.local_id,
-                    "provider": self.payment.provider,
-                },
-            )
-            self.payment.state = OrderPayment.PAYMENT_STATE_CANCELED
-            self.payment.save(update_fields=["state"])
-
+        if self.payment.state not in (
+            OrderPayment.PAYMENT_STATE_CONFIRMED,
+            OrderPayment.PAYMENT_STATE_REFUNDED,
+            OrderPayment.PAYMENT_STATE_CANCELED,
+        ):
+            try:
+                capture(self.payment)
+            except PaymentException as e:
+                messages.error(self.request, str(e))
+            except LockTimeoutException:
+                messages.error(
+                    self.request,
+                    _(
+                        "We received your payment but were unable to mark your ticket as "
+                        "the server was too busy. Please check back in a couple of "
+                        "minutes."
+                    ),
+                )
+            except Quota.QuotaExceededException:
+                messages.error(
+                    self.request,
+                    _(
+                        "We received your payment but were unable to mark your ticket as "
+                        "paid as one of your ordered products is sold out. Please contact "
+                        "the event organizer for further steps."
+                    ),
+                )
         return self._redirect_to_order()
 
     def _redirect_to_order(self):
@@ -260,9 +247,13 @@ class ReturnView(SaferpayOrderView, View):
 @method_decorator(csrf_exempt, "dispatch")
 class WebhookView(View):
     def get(self, request, *args, **kwargs):
-        from .tasks import capture_task
+        if kwargs.get("action") == "success":
+            from .tasks import capture_task
 
-        capture_task.apply_async(args=(self.payment.pk,), countdown=30)
+            capture_task.apply_async(args=(self.payment.pk,), countdown=30)
+        elif kwargs.get("action") == "fail":
+            self.payment.fail(log_data={"reason": "Webhook called with action=fail"})
+
         return HttpResponse(status=200)
 
     @cached_property

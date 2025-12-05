@@ -14,7 +14,7 @@ def register_payment_provider(sender, **kwargs):
         SaferpayGiropay, SaferpayIdeal, SaferpayPaydirekt, SaferpayPayPal,
         SaferpayPostfinanceCard, SaferpayPostfinancePay, SaferpayPostfinanceEfinance,
         SaferpaySepadebit, SaferpaySettingsHolder, SaferpaySofort,
-        SaferpayTwint,
+        SaferpayTwint, SaferpayWero,
     )
 
     return [
@@ -33,6 +33,7 @@ def register_payment_provider(sender, **kwargs):
         SaferpaySettingsHolder,
         SaferpaySofort,
         SaferpayTwint,
+        SaferpayWero,
     ]
 
 

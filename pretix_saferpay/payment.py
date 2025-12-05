@@ -19,6 +19,8 @@ from pretix.base.settings import SettingsSandbox
 from pretix.multidomain.urlreverse import build_absolute_uri
 from requests import HTTPError, RequestException
 
+from . import __spec_version__
+
 logger = logging.getLogger(__name__)
 
 
@@ -209,13 +211,21 @@ class SaferpaySettingsHolder(BasePaymentProvider):
                         required=False,
                     ),
                 ),
+                # Deprecated
+                # (
+                #     "method_sofort",
+                #     forms.BooleanField(
+                #         label=_("Sofort"),
+                #         required=False,
+                #     ),
+                # ),
                 (
-                    "method_sofort",
+                    "method_wero",
                     forms.BooleanField(
-                        label=_("Sofort"),
+                        label=_("Wero"),
                         required=False,
-                    ),
-                ),
+                    )
+                )
             ]
             + list(super().settings_form_fields.items())
         )
@@ -344,7 +354,7 @@ class SaferpayMethod(BasePaymentProvider):
                     "Payment/v1/Transaction/Cancel",
                     json={
                         "RequestHeader": {
-                            "SpecVersion": "1.10",
+                            "SpecVersion": __spec_version__,
                             "CustomerId": self.settings.customer_id,
                             "RequestId": str(uuid.uuid4()),
                             "RetryIndicator": 0,
@@ -384,7 +394,7 @@ class SaferpayMethod(BasePaymentProvider):
                 "Payment/v1/Transaction/Refund",
                 json={
                     "RequestHeader": {
-                        "SpecVersion": "1.10",
+                        "SpecVersion": __spec_version__,
                         "CustomerId": self.settings.customer_id,
                         "RequestId": str(uuid.uuid4()),
                         "RetryIndicator": 0,
@@ -415,7 +425,7 @@ class SaferpayMethod(BasePaymentProvider):
                     "Payment/v1/Transaction/Capture",
                     json={
                         "RequestHeader": {
-                            "SpecVersion": "1.10",
+                            "SpecVersion": __spec_version__,
                             "CustomerId": self.settings.customer_id,
                             "RequestId": str(uuid.uuid4()),
                             "RetryIndicator": 0,
@@ -568,7 +578,7 @@ class SaferpayMethod(BasePaymentProvider):
     def _get_payment_page_init_body(self, payment):
         b = {
             "RequestHeader": {
-                "SpecVersion": "1.10",
+                "SpecVersion": __spec_version__,
                 "CustomerId": self.settings.customer_id,
                 "RequestId": str(uuid.uuid4()),
                 "RetryIndicator": 0,
@@ -597,8 +607,8 @@ class SaferpayMethod(BasePaymentProvider):
             "Payer": {
                 "LanguageCode": self.get_locale(payment.order.locale),
             },
-            "ReturnUrls": {
-                "Success": build_absolute_uri(
+            "ReturnUrl": {
+                "Url": build_absolute_uri(
                     self.event,
                     "plugins:pretix_saferpay:return",
                     kwargs={
@@ -607,45 +617,27 @@ class SaferpayMethod(BasePaymentProvider):
                         "hash": hashlib.sha1(
                             payment.order.secret.lower().encode()
                         ).hexdigest(),
-                        "action": "success",
-                    },
-                ),
-                "Fail": build_absolute_uri(
-                    self.event,
-                    "plugins:pretix_saferpay:return",
-                    kwargs={
-                        "order": payment.order.code,
-                        "payment": payment.pk,
-                        "hash": hashlib.sha1(
-                            payment.order.secret.lower().encode()
-                        ).hexdigest(),
-                        "action": "fail",
-                    },
-                ),
-                "Abort": build_absolute_uri(
-                    self.event,
-                    "plugins:pretix_saferpay:return",
-                    kwargs={
-                        "order": payment.order.code,
-                        "payment": payment.pk,
-                        "hash": hashlib.sha1(
-                            payment.order.secret.lower().encode()
-                        ).hexdigest(),
-                        "action": "abort",
                     },
                 ),
             },
             "Notification": {
-                "NotifyUrl": build_absolute_uri(
+                "SuccessNotifyUrl": build_absolute_uri(
                     self.event,
                     "plugins:pretix_saferpay:webhook",
                     kwargs={
                         "payment": payment.pk,
+                        "action": "success",
+                    },
+                ),
+                "FailNotifyUrl": build_absolute_uri(
+                    self.event,
+                    "plugins:pretix_saferpay:webhook",
+                    kwargs={
+                        "payment": payment.pk,
+                        "action": "fail",
                     },
                 ),
             },
-            "BillingAddressForm": {"Display": False},
-            "DeliveryAddressForm": {"Display": False},
         }
         return b
 
@@ -766,6 +758,14 @@ class SaferpayCC(SaferpayMethod):
         return self.settings.get("_enabled", as_type=bool) and self.payment_methods
 
 
+class RetiredMethodMixin:
+    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
+        return False
+
+    def order_change_allowed(self, order: Order) -> bool:
+        return False
+
+
 class SaferpayBancontact(SaferpayMethod):
     method = "bancontact"
     verbose_name = _("Bancontact via Saferpay")
@@ -789,21 +789,13 @@ class SaferpayEPS(SaferpayMethod):
     payment_methods = ["EPS"]
 
 
-class SaferpayGiropay(SaferpayMethod):
+class SaferpayGiropay(RetiredMethodMixin, SaferpayMethod):
     method = "giropay"
     verbose_name = _("giropay via Saferpay")
     public_name = _("giropay")
     refunds_allowed = False
     cancel_flow = False
     payment_methods = ["GIROPAY"]
-
-    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
-        # giropay has shut down
-        return False
-
-    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
-        # giropay has shut down
-        return False
 
 
 class SaferpayIdeal(SaferpayMethod):
@@ -830,34 +822,18 @@ class SaferpayPayPal(SaferpayMethod):
     payment_methods = ["PAYPAL"]
 
 
-class SaferpayPostfinanceCard(SaferpayMethod):
+class SaferpayPostfinanceCard(RetiredMethodMixin, SaferpayMethod):
     method = "postfinance_card"
     verbose_name = _("PostFinance Card via Saferpay")
     public_name = _("PostFinance Card")
     payment_methods = ["POSTCARD"]
 
-    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
-        # Saferpay<>PostFinance Card was shut down May 1st 2024
-        return False
 
-    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
-        # Saferpay<>PostFinance Card was shut down May 1st 2024
-        return False
-
-
-class SaferpayPostfinanceEfinance(SaferpayMethod):
+class SaferpayPostfinanceEfinance(RetiredMethodMixin, SaferpayMethod):
     method = "postfinance_efinance"
     verbose_name = _("PostFinance eFinance via Saferpay")
     public_name = _("PostFinance eFinance")
     payment_methods = ["POSTFINANCE"]
-
-    def is_allowed(self, request: HttpRequest, total: Decimal = None) -> bool:
-        # Saferpay<>PostFinance eFinance was shut down May 1st 2024
-        return False
-
-    def order_change_allowed(self, order: Order, request: HttpRequest = None) -> bool:
-        # Saferpay<>PostFinance eFinance was shut down May 1st 2024
-        return False
 
 
 class SaferpayPostfinancePay(SaferpayMethod):
@@ -875,7 +851,7 @@ class SaferpaySepadebit(SaferpayMethod):
     payment_methods = ["DIRECTDEBIT"]
 
 
-class SaferpaySofort(SaferpayMethod):
+class SaferpaySofort(RetiredMethodMixin, SaferpayMethod):
     method = "sofort"
     verbose_name = _("Sofort via Saferpay")
     public_name = _("Sofort")
@@ -891,3 +867,12 @@ class SaferpayTwint(SaferpayMethod):
     refunds_allowed = False
     cancel_flow = False
     payment_methods = ["TWINT"]
+
+
+class SaferpayWero(SaferpayMethod):
+    method = "wero"
+    verbose_name = _("Wero via Saferpay")
+    public_name = _("Wero")
+    refunds_allowed = True
+    cancel_flow = False
+    payment_methods = ["WERO"]

@@ -9,14 +9,14 @@ event_patterns = [
         include(
             [
                 event_url(
-                    r"^webhook/(?P<payment>[0-9]+)/$",
+                    r"^webhook/(?P<payment>[0-9]+)/(?P<action>[^/]+)/$",
                     WebhookView.as_view(),
                     name="webhook",
                     require_live=False,
                 ),
                 path("redirect/", redirect_view, name="redirect"),
                 path(
-                    "return/<str:order>/<str:hash>/<int:payment>/<str:action>",
+                    "return/<str:order>/<str:hash>/<int:payment>",
                     ReturnView.as_view(),
                     name="return",
                 ),

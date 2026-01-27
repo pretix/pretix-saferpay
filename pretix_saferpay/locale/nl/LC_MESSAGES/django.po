@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2026-01-24 05:28+0000\n"
+"PO-Revision-Date: 2026-01-28 04:28+0000\n"
 "Last-Translator: Ruud Hendrickx <ruud@leckxicon.eu>\n"
 "Language-Team: Dutch <https://translate.pretix.eu/projects/pretix/pretix-"
 "plugin-saferpay/nl/>\n"
@@ -37,7 +37,7 @@ msgstr "Saferpay"
 
 #: pretix_saferpay/payment.py:41
 msgid "Endpoint"
-msgstr "Endpoint"
+msgstr "Eindpunt"
 
 #: pretix_saferpay/payment.py:44
 msgctxt "saferpay"
@@ -278,12 +278,13 @@ msgstr "Onbekende reden"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:17
 msgid "The payment process has started in a new window."
-msgstr "Het betalingsproces is begonnen in een nieuwe venster."
+msgstr "Het betalingsproces is begonnen in een nieuw venster."
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
 msgid "The window to enter your payment data was not opened or was closed?"
 msgstr ""
-"Het venster om uw betaling in te voeren is niet geopend of was gesloten?"
+"Het venster voor het invoeren van uw betalingsgegevens werd niet geopend of "
+"werd gesloten?"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:24
 msgid "Click here in order to open the window."

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2026-01-28 04:28+0000\n"
+"PO-Revision-Date: 2026-01-29 03:28+0000\n"
 "Last-Translator: Ruud Hendrickx <ruud@leckxicon.eu>\n"
 "Language-Team: Dutch <https://translate.pretix.eu/projects/pretix/pretix-"
 "plugin-saferpay/nl/>\n"
@@ -233,7 +233,7 @@ msgstr ""
 #: pretix_saferpay/templates/pretix_saferpay/checkout_payment_confirm.html:8
 #: pretix_saferpay/templates/pretix_saferpay/control.html:15
 msgid "Payment method"
-msgstr "Betalingsmethode"
+msgstr "Betaalmethode"
 
 #: pretix_saferpay/templates/pretix_saferpay/control.html:6
 msgid "ID"

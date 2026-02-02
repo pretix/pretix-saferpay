@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2026-01-29 03:28+0000\n"
+"PO-Revision-Date: 2026-02-02 23:28+0000\n"
 "Last-Translator: Ruud Hendrickx <ruud@leckxicon.eu>\n"
 "Language-Team: Dutch <https://translate.pretix.eu/projects/pretix/pretix-"
 "plugin-saferpay/nl/>\n"
@@ -37,7 +37,7 @@ msgstr "Saferpay"
 
 #: pretix_saferpay/payment.py:41
 msgid "Endpoint"
-msgstr "Eindpunt"
+msgstr "Endpoint"
 
 #: pretix_saferpay/payment.py:44
 msgctxt "saferpay"
@@ -51,11 +51,11 @@ msgstr "Testing"
 
 #: pretix_saferpay/payment.py:50
 msgid "API Username"
-msgstr "API Gebruikersnaam"
+msgstr "Gebruikersnaam API"
 
 #: pretix_saferpay/payment.py:54
 msgid "API Password"
-msgstr "API Wachtwoord"
+msgstr "Wachtwoord API"
 
 #: pretix_saferpay/payment.py:58
 msgid "Customer ID"
@@ -63,7 +63,7 @@ msgstr "Klantnummer"
 
 #: pretix_saferpay/payment.py:62
 msgid "Terminal ID"
-msgstr "Terminal ID"
+msgstr "Terminal-ID"
 
 #: pretix_saferpay/payment.py:69
 msgid "VISA"
@@ -139,15 +139,15 @@ msgid ""
 "We had trouble communicating with Saferpay. Please try again and get in "
 "touch with us if this problem persists."
 msgstr ""
-"Wij hadden problemen in de communicatie met Saferpay. Probeer het opnieuw en "
-"neem contact met ons op als dit probleem aanhoudt."
+"We hadden problemen met de communicatie met Saferpay. Probeer het opnieuw en "
+"neem contact met ons op als dit probleem zich blijft voordoen."
 
 #: pretix_saferpay/payment.py:364
 msgid ""
 "The Saferpay plugin is operating in test mode. No money will actually be "
 "transferred."
 msgstr ""
-"De Saferpay-plug in zit in testmodus. Er zal geen geld worden overgemaakt."
+"De Saferpay-plug-in zit in testmodus. Er zal geen geld worden overgemaakt."
 
 #: pretix_saferpay/payment.py:522
 msgid "Credit card via Saferpay"
@@ -211,7 +211,7 @@ msgstr "TWINT via Saferpay"
 
 #: pretix_saferpay/signals.py:34
 msgid "Payment captured."
-msgstr "Betaling ontvangen."
+msgstr "Betaling vastgelegd."
 
 #: pretix_saferpay/signals.py:35
 msgid "Payment authorized."
@@ -283,8 +283,8 @@ msgstr "Het betalingsproces is begonnen in een nieuw venster."
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:20
 msgid "The window to enter your payment data was not opened or was closed?"
 msgstr ""
-"Het venster voor het invoeren van uw betalingsgegevens werd niet geopend of "
-"werd gesloten?"
+"Het venster voor het invoeren van uw betalingsgegevens was niet open of werd "
+"gesloten?"
 
 #: pretix_saferpay/templates/pretix_saferpay/redirect.html:24
 msgid "Click here in order to open the window."

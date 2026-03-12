@@ -801,7 +801,7 @@ class SaferpayGiropay(RetiredMethodMixin, SaferpayMethod):
 class SaferpayIdeal(SaferpayMethod):
     method = "ideal"
     verbose_name = _("iDEAL via Saferpay")
-    public_name = _("iDEAL")
+    public_name = _("iDEAL | Wero")
     refunds_allowed = False
     cancel_flow = False
     payment_methods = ["IDEAL"]

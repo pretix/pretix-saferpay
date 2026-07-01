@@ -698,7 +698,7 @@ class SaferpayMethod(BasePaymentProvider):
                             ],
                         },
                     },
-                    salt="safe-redirect",
+                    salt="plugins:saferpay:redirect:safe-redirect-data",
                 )
             )
         else:

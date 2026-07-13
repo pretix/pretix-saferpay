@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-22 22:45+0100\n"
-"PO-Revision-Date: 2026-07-12 19:48+0000\n"
+"PO-Revision-Date: 2026-07-13 19:48+0000\n"
 "Last-Translator: ahmed badr <ahmedbadr@oma.com.eg>\n"
 "Language-Team: Arabic <https://translate.pretix.eu/projects/pretix/pretix-"
 "plugin-saferpay/ar/>\n"
@@ -96,7 +96,7 @@ msgstr "التحويلات الإلكترونية"
 
 #: pretix_saferpay/payment.py:104 pretix_saferpay/payment.py:560
 msgid "eps"
-msgstr "نعم"
+msgstr "نقاط إضافية"
 
 #: pretix_saferpay/payment.py:109 pretix_saferpay/payment.py:569
 msgid "giropay"
@@ -303,8 +303,7 @@ msgid ""
 "further steps."
 msgstr ""
 "لقد تلقينا دفعتك، لكننا لم نتمكن من وضع علامة «مدفوع» على تذكرتك لأن أحد "
-"المنتجات التي طلبتها قد نفد من المخزون. يرجى الاتصال بمنظم الحدث لمعرفة "
-"الخطوات التالية."
+"المنتجات التي طلبتها قد نفد. يرجى الاتصال بمنظم الحدث لمعرفة الخطوات التالية."
 
 #: pretix_saferpay/views.py:183
 msgid ""

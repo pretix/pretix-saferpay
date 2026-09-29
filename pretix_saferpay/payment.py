@@ -13,6 +13,7 @@ from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import gettext_lazy as _, pgettext, gettext
 from pretix.base.decimal import round_decimal
+from pretix.base.forms import SecretKeySettingsField
 from pretix.base.models import Event, OrderPayment, OrderRefund, Order
 from pretix.base.payment import BasePaymentProvider, PaymentException
 from pretix.base.settings import SettingsSandbox
@@ -56,7 +57,7 @@ class SaferpaySettingsHolder(BasePaymentProvider):
             ),
             (
                 "api_pass",
-                forms.CharField(
+                SecretKeySettingsField(
                     label=_("API Password"),
                 ),
             ),
